@@ -12,10 +12,17 @@
 
 ### 1.1. Bối cảnh thực tế
 Em xin trình bày về công ty ORGASM với:
-- **1 trụ sở chính** tại Hà Nội
-- **10 chi nhánh** phân tán trên toàn quốc: Huế, Nam Định, Vinh, Nha Trang, Thái Bình, Hà Nội, Bình Dương, Đồng Nai, Phú Thọ, Đà Nẵng
-- **400 nhân viên** làm việc tại 100 phòng ban khác nhau
-- **100 dự án** đang triển khai đồng thời
+- **1 trụ sở chính** tại Hà Nội (Vị trí 8 - Server tổng, không phải chi nhánh)
+- **7 chi nhánh** phân tán trên toàn quốc:
+  - Vị trí 1: Chi nhánh Huế
+  - Vị trí 2: Chi nhánh Nam Định
+  - Vị trí 3: Chi nhánh Vinh
+  - Vị trí 4: Chi nhánh Nha Trang
+  - Vị trí 5: Chi nhánh Thái Bình
+  - Vị trí 6: Chi nhánh Đồng Nai
+  - Vị trí 7: Chi nhánh Bình Dương
+- **280 nhân viên** làm việc tại 70 phòng ban khác nhau
+- **70 dự án** đang triển khai đồng thời
 
 ### 1.2. Các vấn đề cần giải quyết
 
@@ -24,9 +31,9 @@ Em xin trình bày về công ty ORGASM với:
 - Nhu cầu truy cập dữ liệu nhanh tại mỗi chi nhánh → cần dữ liệu gần người dùng
 
 #### b) Khối lượng dữ liệu lớn
-- 400 nhân viên × 12 tháng = 4,800 bản ghi lương/năm
-- 100 dự án đang chạy song song
-- 100 chính sách áp dụng đồng thời
+- 280 nhân viên × 12 tháng = 3,360 bản ghi lương/năm
+- 70 dự án đang chạy song song
+- 70 chính sách áp dụng đồng thời
 
 #### c) Tính sẵn sàng cao
 - Nếu trụ sở chính gặp sự cố → các chi nhánh vẫn hoạt động bình thường
@@ -41,16 +48,19 @@ Em xin trình bày về công ty ORGASM với:
 #### ✅ **Phân mảnh ngang (Horizontal Fragmentation)**
 ```sql
 -- Mỗi chi nhánh có phòng ban riêng
--- CN01: PB001-PB010 (10 phòng ban)
--- CN02: PB011-PB020 (10 phòng ban)
--- ...
--- CN10: PB091-PB100 (10 phòng ban)
+-- CN01 (Huế):       PB001-PB010 (10 phòng ban)
+-- CN02 (Nam Định):  PB011-PB020 (10 phòng ban)
+-- CN03 (Vinh):      PB021-PB030 (10 phòng ban)
+-- CN04 (Nha Trang): PB031-PB040 (10 phòng ban)
+-- CN05 (Thái Bình): PB041-PB050 (10 phòng ban)
+-- CN06 (Đồng Nai):  PB051-PB060 (10 phòng ban)
+-- CN07 (Bình Dương):PB061-PB070 (10 phòng ban)
 
 -- Demo query:
 SELECT ID_ChiNhanh, COUNT(*) AS SoPhongBan 
 FROM PhongBan 
 GROUP BY ID_ChiNhanh;
--- Kết quả: Mỗi chi nhánh đều có 10 phòng ban
+-- Kết quả: Mỗi chi nhánh đều có 10 phòng ban (7 chi nhánh × 10 = 70 phòng)
 ```
 
 **Lợi ích:**
@@ -95,20 +105,28 @@ SELECT TOP 10 * FROM AuditLog ORDER BY ChangedAt DESC;
                     ┌─────────────────────┐
                     │   TRỤ SỞ CHÍNH      │
                     │   (HÀ NỘI)          │
+                    │   Vị trí 8          │
                     │   - Máy chủ SQL     │
                     │   - Publisher       │
                     │   - Toàn bộ dữ liệu │
                     └──────────┬──────────┘
                                │
-         ┌─────────────────────┼─────────────────────┐
-         │                     │                     │
-    ┌────▼────┐           ┌────▼────┐           ┌────▼────┐
-    │  CN01   │           │  CN02   │    ...    │  CN10   │
-    │  (Huế)  │           │(Nam Đình)│           │(Đà Nẵng)│
-    │Subscriber│           │Subscriber│           │Subscriber│
-    │10 phòng │           │10 phòng  │           │10 phòng  │
-    │40 NV    │           │40 NV     │           │40 NV     │
-    └─────────┘           └──────────┘           └──────────┘
+         ┌─────────┬───────────┼───────────┬─────────┬─────────┐
+         │         │           │           │         │         │
+    ┌────▼────┐ ┌─▼──┐  ┌─────▼─────┐ ┌──▼───┐ ┌──▼───┐ ┌───▼────┐
+    │  CN01   │ │CN02│  │   CN03    │ │ CN04 │ │ CN05 │ │  CN06  │
+    │  Huế    │ │Nam │  │   Vinh    │ │N.Trng│ │T.Bình│ │Đ. Nai  │
+    │ (VT 1)  │ │Định│  │  (VT 3)   │ │(VT 4)│ │(VT 5)│ │ (VT 6) │
+    │10 phòng │ │10PB│  │  10 phòng │ │10 PB │ │10 PB │ │ 10 PB  │
+    │40 NV    │ │40NV│  │   40 NV   │ │40 NV │ │40 NV │ │ 40 NV  │
+    └─────────┘ └────┘  └───────────┘ └──────┘ └──────┘ └────────┘
+                                    ┌──────────┐
+                                    │   CN07   │
+                                    │B. Dương  │
+                                    │  (VT 7)  │
+                                    │ 10 phòng │
+                                    │  40 NV   │
+                                    └──────────┘
 ```
 
 ### 2.2. Vị trí triển khai chi tiết
@@ -222,8 +240,8 @@ EXEC sp_ThongKeTheoChiNhanh;
 ```
 
 **Lợi ích:**
-- ✅ Giảm kích thước dữ liệu tại mỗi site (40 NV thay vì 400)
-- ✅ Tăng tốc độ truy vấn local (chỉ scan 40 dòng)
+- ✅ Giảm kích thước dữ liệu tại mỗi site (40 NV thay vì 280)
+- ✅ Tăng tốc độ truy vấn local (chỉ scan 40 dòng thay vì 280)
 - ✅ Tăng tính bảo mật (CN04 không thấy dữ liệu CN01)
 
 #### **B. Dữ liệu NHÂN BẢN** (Replication)
@@ -231,7 +249,7 @@ EXEC sp_ThongKeTheoChiNhanh;
 **Bảng: ChinhSach**
 ```sql
 -- Được nhân bản tại tất cả chi nhánh
--- Mỗi chi nhánh có 10 chính sách (tổng 100)
+-- Mỗi chi nhánh có 10 chính sách (7 chi nhánh × 10 = 70 tổng)
 
 -- Kiểm tra:
 SELECT ID_ChiNhanh, COUNT(*) AS SoChinhSach 
@@ -264,21 +282,22 @@ SELECT * FROM TruSoChinh;
 
 **Bảng: ChiNhanh**
 ```sql
--- 10 chi nhánh, được nhân bản để tham chiếu
+-- 7 chi nhánh, được nhân bản để tham chiếu
 SELECT ID_ChiNhanh, TenChiNhanh, DiaChi FROM ChiNhanh;
+-- CN01-CN07: Huế, Nam Định, Vinh, Nha Trang, Thái Bình, Đồng Nai, Bình Dương
 ```
 
 ### 3.2. Lược đồ ánh xạ (Allocation Schema)
 
 ```
-Máy chủ (Hà Nội):
-├── PhongBan (100 dòng - toàn bộ)
-├── NhanVien (400 dòng - toàn bộ)
-├── ChinhSach (100 dòng - toàn bộ)
-├── Luong (400 dòng - toàn bộ)
-└── DuAn (100 dòng - toàn bộ)
+Máy chủ (Hà Nội - Vị trí 8):
+├── PhongBan (70 dòng - toàn bộ)
+├── NhanVien (280 dòng - toàn bộ)
+├── ChinhSach (70 dòng - toàn bộ)
+├── Luong (280 dòng - toàn bộ)
+└── DuAn (70 dòng - toàn bộ)
 
-Chi nhánh CN04 (Nha Trang):
+Chi nhánh CN04 (Nha Trang - Vị trí 4):
 ├── PhongBan (10 dòng - fragment CN04)
 ├── NhanVien (40 dòng - fragment CN04)
 ├── ChinhSach (10 dòng - replica local)
@@ -286,7 +305,7 @@ Chi nhánh CN04 (Nha Trang):
 ├── DuAn (10 dòng - fragment CN04)
 ├── ChucVu (10 dòng - replica)
 ├── TruSoChinh (1 dòng - replica)
-└── ChiNhanh (10 dòng - replica)
+└── ChiNhanh (7 dòng - replica)
 ```
 
 ### 3.3. Đồng bộ hóa dữ liệu
@@ -312,7 +331,7 @@ SELECT * FROM AuditLog WHERE TableName = 'NhanVien' ORDER BY ChangedAt DESC;
 
 ### 4.1. Phân quyền chi tiết
 
-#### **Nhóm 1: Nhân viên (400 người)**
+#### **Nhóm 1: Nhân viên (280 người)**
 
 **Quyền hạn:**
 - ✅ **SELECT** trên bảng NhanVien (chỉ bản thân)
@@ -333,7 +352,7 @@ EXEC sp_XemChiTietNhanVien @ID_NhanVien = 'NV0001';
 
 ---
 
-#### **Nhóm 2: Trưởng phòng (100 người)**
+#### **Nhóm 2: Trưởng phòng (70 người)**
 
 **Quyền hạn:**
 - ✅ **SELECT** toàn bộ nhân viên trong phòng
@@ -357,7 +376,7 @@ WHERE nv.ID_PhongBan = 'PB001';
 
 ---
 
-#### **Nhóm 3: Giám đốc chi nhánh (10 người)**
+#### **Nhóm 3: Giám đốc chi nhánh (7 người)**
 
 **Quyền hạn:**
 - ✅ **SELECT/INSERT/UPDATE/DELETE** toàn bộ dữ liệu chi nhánh
@@ -421,11 +440,14 @@ ORDER BY ID_ChiNhanh;
 
 /* Kết quả:
 ID_ChiNhanh  SoNhanVien
-CN01         40
-CN02         40
-CN03         40
-...
-CN10         40
+CN01         40         (Huế)
+CN02         40         (Nam Định)
+CN03         40         (Vinh)
+CN04         40         (Nha Trang)
+CN05         40         (Thái Bình)
+CN06         40         (Đồng Nai)
+CN07         40         (Bình Dương)
+Tổng: 280 nhân viên
 */
 ```
 
@@ -439,10 +461,14 @@ GROUP BY ID_ChiNhanh;
 
 /* Kết quả:
 ID_ChiNhanh  SoChinhSach
-CN01         10
-CN02         10
-...
-CN10         10
+CN01         10         (Huế)
+CN02         10         (Nam Định)
+CN03         10         (Vinh)
+CN04         10         (Nha Trang)
+CN05         10         (Thái Bình)
+CN06         10         (Đồng Nai)
+CN07         10         (Bình Dương)
+Tổng: 70 chính sách (mỗi chi nhánh có bản sao đầy đủ)
 */
 ```
 
@@ -470,9 +496,14 @@ EXEC sp_ThongKeTheoChiNhanh;
 
 /* Kết quả:
 ID_ChiNhanh  TenChiNhanh       SoPhongBan  SoDuAn  SoNhanVien  TongQuiLuong
-CN01         ORGASM Hue        10          10      40          1,875,828,909
-CN02         ORGASM Nam Dinh   10          10      40          1,885,172,589
-...
+CN01         ORGASM Hue        10          10      40          ~1.88 tỷ VNĐ
+CN02         ORGASM Nam Dinh   10          10      40          ~1.88 tỷ VNĐ
+CN03         ORGASM Vinh       10          10      40          ~1.88 tỷ VNĐ
+CN04         ORGASM Nha Trang  10          10      40          ~1.88 tỷ VNĐ
+CN05         ORGASM Thai Binh  10          10      40          ~1.88 tỷ VNĐ
+CN06         ORGASM Dong Nai   10          10      40          ~1.88 tỷ VNĐ
+CN07         ORGASM Binh Duong 10          10      40          ~1.88 tỷ VNĐ
+Tổng: 70 phòng ban, 70 dự án, 280 nhân viên, ~13.2 tỷ VNĐ tổng quỹ lương
 */
 ```
 
