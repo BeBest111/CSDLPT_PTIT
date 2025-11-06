@@ -1,0 +1,116 @@
+BÀI TẬP LỚN MÔN CSDLPT CỦA MỖI NHÓM
+
+Mỗi lớp chia thành 7 nhóm (Lớp thường mỗi nhóm 10 bạn; CLC: 3-4 bạn)
+
+Mỗi nhóm gồm 2 phần: Lý thuyết và bài tập thực hành
+
+A.  Bài tập thực hành
+
+1.Gợi ý lựa chọn các bài
+
+- Đăng kí tín chỉ
+
+- Quản lý vật tư
+
+- Quản lý bán vé máy bay
+
+……………………………………….
+
+…….
+
+2. Viết tài liệu
+
+2.1.Đặt vấn đề:
+
++Nhu cầu và tầm quan trọng của dự án
+
++ Sơ lược về dự án : Một số nhiệm vụ chính cần thực hiện
+
++ ……..,( làm nổi bật lên nhu cầu cần thiết phải sử dụng CSDLPT), Vị trí
+và nhiệm vụ, dữ liệu khi triển khai dự án, các đối tượng tham gia sử
+dụng dự án...)
+
+2.2. Phân tích và Thiết kế
+
+2.2.1. Phân tích
+
+-Các chức năng chính truy cập vào dữ liệu trong dự án, Bảng tần suất
+truy cập tại các vị trí
+
+-Phân quyền cho các nhóm đối tượng thực hiện dự án
+
+-.Phân tích chức năng của từng vị trí thực hiện dự án
+
+-Chức năng ở máy trạm, máy chủ
+
+- Phân tích CSDL ( Mô hình thức thể liên kết)
+
+2.2.2. Thiết kế
+
+a/Thiết kế CSDL của hệ thống (bảng, mô hình quan hệ giữa các
+bảng-diagram)
+
+- Thiết kế csdl quan hệ : tên bảng,Cấu trúc các bảng dữ liệu trong hệ
+thống, mối quan hệ giưã các bảng nếu có
+
+- Thiết kế CSDLPT
+
++ lược đồ thông tin phục vụ cho phân mảnh ngang dẫn xuất, nhân bản, phân
+mảnh ngang
+
++ Lược đồ ánh xạ
+
++ Thiết kế định vị và vẽ sơ đồ định vị,đồng bộ hóa
+
++Thiết kế Kiến trúc của hệ thống
+
+QTLPT:
+
+* Ngang hàng hay Clien/Server
+
+  * Đường đồng bộ hóa, linkServer
+
+  *Thiết kế mô hình của hệ thống tại các chi nhánh và toàn hệ thống
+  (front end và back end)
+
+3. Cài đặt vật lý thực tế
+
+3.1. Cài đặt VPN (Mạng ảo)
+
+  - Chúng ta cần thiết lập một môi trường mạng và quản lý các địa chỉ IP
+  cho các thành phần trong hệ thống.
+
+3.2.Tạo đường link kết nối mạng giữa các server với nhau
+
+3.3. Cài đặt SQL server hoặc MongDB
+
+- Nhớ print Screen từng mang hình cài đặt
+
+(Các lệnh SQL cô gửi)
+
+3.4. Kiểm tra dịch vụ Agent
+
+3.5. Tạo link CSDL giưaz các Server
+
+Nhớ print Screen từn màn hình khi tạo Link Server
+
+3.6. Tạo Pubblication
+
+( Theo tài liệu hướng dẫn cô gửi)
+
+Nhớ print Screen từng màn hình khi tạo
+
+3.7. Thử các giao tác tương ứng với các chức năng (viết triger để phân
+quyền bảo vệ cho các bảng, Gõ lệnh SQL, thử các transtraction)
+
+a. Nhập dữ liệu
+
+b. Hiển thị dữ liệu (để kiểm tra xem có đồng bộ hóa, nhân bản,, phân
+mảnh ngang hay không, linkserver?)
+
+c. thống kê ( để kiểm tra xem có đồng bộ hóa, nhân bản,, phân mảnh ngang
+hay không, linkserver?)
+
+…………
+
++ Viết phần mềm ứng dụng cho các trạm theo thiết kế nếu có thể (Bonus )

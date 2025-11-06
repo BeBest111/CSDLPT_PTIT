@@ -1,0 +1,3898 @@
+HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG
+
+LỚP: D22VHCN04-B
+
+[C:\Users\Admin\Downloads\PTIT logo.png]
+
+BÁO CÁO BÀI TẬP LỚN NHÓM 5
+
+CƠ SỞ DỮ LIỆU PHÂN TÁN
+
+Đề tài: Quản lý nhân viên trong một công ty đa chi nhánh
+
+Giảng viên hướng dẫn: Phan Thị Hà
+
+Nhóm trưởng: Nguyễn Minh Tiến - B22DVCN308
+
+Thành viên nhóm:
+
+Nguyễn Huy Hoàng B22DVCN148
+
+Hoàng Minh Tiến B22DVCN477
+
+Đồng Duy Phúc B22DVCN252
+
+Bùi Huy Hoàng B21DCCN055
+
+Đỗ Xuân Kiên B22DCCN148
+
+HÀ NỘI, THÁNG 10/2025
+
+LỜI CẢM ƠN
+
+Đầu tiên, chúng em xin gửi lời cảm ơn sâu sắc đến Học viện nghệ Bưu
+chính Viễn thông và khoa CNTT1 đã đưa môn học Cơ sở dữ liệu phân tán vào
+trong chương trình giảng dạy. Đặc biệt, chúng em xin gửi lời cảm ơn sâu
+sắc đến giảng viên bộ môn Phan Thị Hà đã dạy dỗ, rèn luyện và truyền đạt
+những kiến thức quý báu cho chúng em trong suốt thời gian học tập vừa
+qua.
+
+Trong thời gian được tham dự lớp học của cô, chúng em đã được tiếp thu
+thêm nhiều kiến thức bổ ích, học tập được tinh thần làm việc hiệu quả,
+nghiêm túc. Đây thực là những điều rất cần thiết cho quá trình học tập
+và công tác sau này của em. Thêm vào đó, nhờ sự dẫn dắt và chỉ bảo của
+cô, chúng em đã thực hiện được một đề tài bài tập lớn hoàn c.RSTB hỉnh
+cho môn học này, chúng em rất biết ơn điều đó.
+
+Em xin chân thành cảm ơn, chúc cô luôn khỏe mạnh và tiếp tục đạt được
+nhiều thành công trong cuộc sống ạ!
+
+PHẦN 1: ĐẶT VẤN ĐỀ
+
+I. Giới thiệu
+
+1. Nhu cầu và tầm quan trọng của dự án
+
+Hiện nay, hầu hết các công ty đa chi nhánh quản lý nhân viên thông qua
+các hệ thống quản lý nhân sự tiên tiến. Các hệ thống này mang lại nhiều
+ưu điểm: hiệu quả quản lý cao, linh hoạt và có khả năng thích ứng, đảm
+bảo tính chính xác và bảo mật cho thông tin nhân viên.
+
+Tuy nhiên, khi triển khai hệ thống này, công ty phải đối mặt với khối
+lượng công việc lớn đặc biệt là khi có nhân viên làm việc tại nhiều chi
+nhánh khác nhau. Việc quản lý hồ sơ, quá trình làm việc, thông tin về
+lương thưởng, lịch làm việc cá nhân của từng nhân viên sẽ trở nên phức
+tạp. Đồng thời, với sự gia tăng số lượng nhân viên trong công ty và số
+lượng chi nhánh mở rộng, việc quản lý trở nên khó khăn hơn.
+
+Một điều quan trọng là các công ty đa chi nhánh thường có nhiều chi
+nhánh trên toàn quốc hoặc trên thế giới, điều này dẫn đến việc khối
+lượng dữ liệu tăng lên đáng kể mỗi năm. Việc xây dựng hệ thống quản lý
+nhân viên dựa trên cơ sở dữ liệu phân tán là cần thiết để đảm bảo hiệu
+quả và tính linh hoạt trong quản lý.
+
+Hệ thống theo mô hình này mang lại nhiều giá trị:
+
+- Giá trị sử dụng cho nhân viên: Nhân viên có thể dễ dàng truy cập và
+xem thông tin về quá trình làm việc của bản thân tại mọi chi nhánh. Việc
+này giúp họ có cái nhìn tổng quan về tiến trình công việc một cách nhanh
+chóng và thuận tiện.
+
+- Giá trị kinh tế: Mặc dù chi phí xây dựng hệ thống có thể cao, nhưng sẽ
+tiết kiệm chi phí về bảo trì, kiểm tra và phục hồi dữ liệu. Hơn nữa, hệ
+thống phân tán cho phép mở rộng mà không làm gián đoạn hoạt động của các
+chi nhánh khác.
+
+- Giá trị nghiệp vụ: Hệ thống tự động xử lý thông tin, giúp tiết kiệm
+thời gian và tăng hiệu suất làm việc. Đồng thời, việc thu thập thông tin
+và quản lý nhân viên trở nên chính xác và an toàn hơn, đáp ứng được các
+yêu cầu nghiệp vụ một cách tin cậy.
+
+2. Sơ lược về dự án
+
+Thông tin về trụ sở chính, chế độ chính sách là dữ liệu chung của hệ
+thống sẽ được cập nhật tại máy chủ.
+
+Thông tin chi nhánh, thông tin nhân viên, thông tin chức vụ, thông tin
+phòng ban, thông tin dự án, thông tin lương là dữ liệu riêng của từng
+chi nhánh và có thể cập nhật tại máy trạm, và máy chủ.
+
+Dữ liệu cập nhật tại máy trạm sẽ chuyển về máy chủ sau 20s -60s (tùy
+thuộc vào tốc độ mạng).
+
+Dự án được triển khai với 1 trụ sở chính với 7 chi nhánh.
+
+(*) Trụ sở chính ở Hà Nội: nơi đặt máy chủ
+
+- Chức năng: quản lý dữ liệu toàn hệ thống.
+
+- Dữ liệu: tất cả dữ liệu.
+
+- Nguồn dữ liệu: được nhân viên nhập cũng như các máy trạm trả về.
+
+- Dữ liệu vận chuyển đến: các máy trạm.
+
+- Đối tượng sử dụng: nhân viên quản lý hệ thống, được phép quản lý (
+thêm, sửa, xóa) tất cả các dữ liệu.
+
+(*) 7 địa điểm: nơi đặt máy trạm
+
+- Chức năng: quản lý dữ liệu của tất cả các đối tượng của chi nhánh đó
+(trừ chế độ chính sách, thông tin trụ sở chính).
+
+- Dữ liệu: thông tin chi nhánh, thông tin nhân viên, thông tin chức vụ,
+thông tin phòng ban, thông tin dự án, thông tin lương và thông tin dữ
+liệu chung: chế độ chính sách, thông tin trụ sở chính.
+
+- Nguồn dữ liệu: được nhân viên nhập cũng như máy chủ gửi đến.
+
+- Dữ liệu vận chuyển đến: máy chủ.
+
+- Đối tượng sử dụng: nhân viên hệ thống, nhân viên.
+
+- Các quyền truy cập của người dùng:
+
++ Nhân viên trụ sở chính: tất cả quyền
+
++ Nhân viên chi nhánh: đọc, thêm sửa xóa thông tin dữ liệu của chi nhánh
+của mình bao gồm: thông tin chi nhánh, thông tin nhân viên, thông tin
+chức vụ, thông tin phòng ban, thông tin dự án, thông tin lương và thông
+tin dữ liệu chung: chế độ chính sách, thông tin trụ sở chính.
+
++ Nhân viên: đọc thông tin như: xem lương, xem thông tin cá nhân
+
++ Trưởng phòng: đọc, nhập lương, xem thông tin các nhân viên trong
+phòng, thông tin cá nhân.
+
++ Tổng giám đốc: tất cả các quyền của trưởng phòng ở mọi phòng ban.
+
+II. Vị trí và nhiệm vụ, dữ liệu khi triển khai dự án
+
+Dự án được triển khai với 1 công ty mẹ tại 7 chi nhánh :
+
+-Vị trí 1: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Huế.
+
+-Vị trí 2: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Nam Định.
+
+-Vị trí 3: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Vinh.
+
+-Vị trí 4: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Nha Trang.
+
+-Vị trí 5: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Thái Bình.
+
+-Vị trí 6: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Đồng Nai.
+
+-Vị trí 7: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Bình Dương.
+
+-Vị trí 8: Server tổng, nơi đặt máy chủ trụ sở chính ở Hà Nội.
+
+III. Các đối tượng tham gia sử dụng dự án
+
+- Nhân viên:
+
++ Xem thông tin của cá nhân, lương, chế độ chính sách.
+
++ Gửi yêu cầu sửa thông tin cá nhân.
+
+- Trưởng phòng:
+
++ Quản lý thông tin của phòng, cũng như các nhân viên trong phòng.
+
++ Quản lý lương của phòng.
+
++ Thống kê lương của nhân viên trong phòng.
+
+- Tổng giám đốc, nhân viên hệ thống tại máy trạm:
+
++ Có tất cả các quyền của nhân viên và trưởng phòng.
+
++ Quản lý thông tin của nhân viên và trưởng phòng tại chi nhánh đó.
+
++ Quản lý thông tin các phòng ban tại chi nhánh đó đó
+
++ Xem báo cáo thống kê của chi nhánh đó.
+
+-   Người quản lý (tại máy chủ tổng):
+
++ Quản lý tất cả dữ liệu có trong hệ thống, cũng như có tất cả các quyền
+của các đối tượng trên.
+
++ Xem báo cáo thống kê của các chi nhánh.
+
+PHẦN 2: PHÂN TÍCH
+
+I. Các chức năng chính của hệ thống trong dự án
+
+- Quản lý thông tin các chế độ chính sách tại trụ sở chính (Thêm, sửa,
+xóa, thống kê tùy chọn).
+
+- Quản lý thông tin các phòng ban ở chi nhánh (Thêm, sửa, xóa, thống kê
+tùy chọn).
+
+- Quản lý thông tin các dự án ở phòng ban (Thêm, sửa, xóa, thống kê tùy
+chọn).
+
+- Quản lý thông tin các chức vụ tại chi nhánh (Thêm, sửa, xóa, thống kê
+tùy chọn).
+
+- Quản lý thông tin lương ở chi nhánh (Thêm, sửa, xóa, thống kê tùy
+chọn).
+
+- Quản lý thông tin nhân viên với các thông tin mã nhân viên, tên nhân
+viên, …. (Thêm, sửa, xóa, thống kê tùy chọn).
+
+II. Phân quyền cho các nhóm đối tượng thực hiện dự án
+
+- Nhân viên tại các chi nhánh:
+
++ Xem thông tin cá nhân, phòng ban, lịch làm việc, chế độ chính sách.
+
++ Gửi yêu cầu sửa, xóa thông tin cá nhân
+
+-  Trưởng phòng tại các phòng ban:
+
++ Xem thông tin phòng ban, chi tiết cơ cấu phòng ban.
+
++ Thêm, sửa, xóa, xem thông tin nhân viên trong phòng ban.
+
++ Thêm, sửa, xóa bảng lương của phòng ban mình.
+
++ Thống kê danh sách và bảng lương trong phòng ban.
+
+- Nhân viên hệ thống, tổng giám đốc (tại chi nhánh):
+
++ Thêm sửa xóa xem thông tin của nhân viên tại chi nhánh đó.
+
++ Thêm sửa xóa xem thông tin của trưởng phòng tại chi nhánh đó.
+
++ Xem thông tin phòng ban tại chi nhánh đó.
+
++ Xem báo cáo thông kế của chi nhánh.
+
+- Nhân viên quản lý (tại máy chủ tổng):
+
++ Truy cập vào dữ liệu có trong hệ thống, cũng như có tất cả các quyền
+của các đối tượng trên.
+
++ Thêm sửa xóa thông tin của tất cả dữ liệu.
+
++ Xem báo cáo chung của các chi nhánh.
+
+III. Phân tích chức năng của từng vị trí thực hiện dự án
+
+1. Tại trụ sở chính Hà Nội.
+
+- Nhân viên quản lý tại trụ sở chính có quyền quản lý tổng thể các thông tin về trụ sở chính, chi nhánh (tên các chi nhánh, địa chỉ, vv), các phòng ban, chức vụ, nhân viên, lương, chế độ chính sách, dự án ( Cụ thể có quyền thêm, sửa, xóa thông tin).
+
+2. Chi nhánh Huế, Nam Định, Nha Trang, Đồng Nai, Thái Bình, Vinh, Bình Dương.
+
+- Quản lý thông tin tại chi nhánh của mình gồm: các phòng ban, các chức
+vụ, các nhân viên, các dự án và lương của các nhân viên. (thao tác cụ
+thể đọc, thêm, sửa, xóa)
+
+- Dữ liệu về các phòng ban được cập nhật máy trạm sẽ được chuyển về máy
+chủ định kỳ hàng tuần.
+
+- Dữ liệu về thông tin nhân viên, thông tin lương, dự án, chức vụ được
+cập nhật máy trạm sẽ được chuyển về máy chủ sau 1 phút.
+
+- Chỉ được quyền xem thông tin về chế độ chính sách, trụ sở chính nhưng
+không có quyền chỉnh sửa. (quyền chỉnh sửa chỉ có ở trụ sở chính).
+
+IV. Chức năng của máy trạm, máy chủ
+
+1. Chức năng ở máy trạm
+
+a. Chức năng quản lý thông tin nhân viên
+
+- Giúp quản lý tập đoàn thực hiện các thao tác thêm, sửa, xóa thông tin
+nhân viên. Các thông tin sẽ được lưu trữ trong cơ sở dữ liệu.
+
+- Các thông tin nhân viên gồm:
+
++ Mã nhân viên.
+
++ Họ và tên.
+
++ Ngày sinh.
+
++ Giới tính.
+
++ Dân tộc.
+
++ Căn cước công dân.
+
++ Số điện thoại.
+
++ Email.
+
++ Địa chỉ.
+
+b. Chức năng quản lý thông tin phòng ban.
+
+- Giúp các tập đoàn có thể thực hiện các thao tác thêm, sửa, xóa thông tin phòng ban. Các thông tin sẽ được lưu trữ trong cơ sở dữ liệu.
+
+- Các thông tin của phòng ban gồm:
+
++ Mã phòng ban.
+
++ Tên phòng ban.
+
++ Email.
+
++ Số điện thoại.
+
+c. Chức năng quản lý thông tin dự án.
+
+- Giúp tập đoàn có thể thực hiện các thao tác thêm, sửa, xóa thông tin
+dự án. Các thông tin sẽ được lưu trữ trong cơ sở dữ liệu.
+
+- Các thông tin dự án gồm:
+
++ Mã dự án.
+
++ Tên dự án.
+
++ Ngày bắt đầu.
+
++ Thời hạn.
+
++ Mô tả.
+
+d. Chức năng quản lý thông tin chức vụ.
+
+- Giúp các tập đoàn có thể thực hiện các thao tác thêm, sửa, xóa thông tin chức vụ của mỗi nhân viên. Các thông tin sẽ được lưu trữ trong cơ sở dữ liệu.
+
+- Các thông tin chức vụ gồm:
+
++ Mã chức vụ.
+
++ Tên chức vụ.
+
++ Bậc lương.
+
+e. Chức năng quản lý lương.
+
+- Giúp các tập đoàn có thể thực hiện các thao tác thêm , sửa, xóa thông
+tin lương của mỗi nhân viên. Các thông tin sẽ được lưu trữ trong cơ sở
+dữ liệu.
+
+- Các thông tin lương gồm:
+
++ Mã lương.
+
++ Mức lương.
+
+f. Chức năng quản lý chi nhánh.
+
+- Giúp các tập đoàn có thể thực hiện các thao tác thêm, sửa, xóa thông
+tin của chi nhánh. Các thông tin sẽ được lưu trữ trong cơ sở dữ liệu.
+
+-Các thông tin về chi nhánh gồm:
+
++ Mã chi nhánh.
+
++ Tên chi nhánh.
+
++ Địa chỉ.
+
++ Email.
+
++ Số điện thoại.
+
+2. Chức năng ở máy chủ
+
+a. Có toàn bộ chức năng của máy trạm
+
+b. Chức năng quản lý thông tin chế độ chính sách.
+
+- Giúp máy chủ có thể thực hiện các thao tác thêm, sửa, xóa thông tin
+chế độ chính sách. Các thông tin này sẽ được lưu trữ trong cơ sở dữ
+liệu.
+
+- Các thông tin chế độ chính sách gồm:
+
++ Mã chính sách.
+
++ Tên chính sách.
+
++ Mô tả.
+
+c. Chức năng quản lý thông tin trụ sở chính.
+
+- Giúp máy chủ có thể thực hiện các thao tác sửa thông tin trụ sở chính.
+Các thông tin này sẽ được lưu trữ trong cơ sở dữ liệu.
+
+- Các thông tin về trụ sở chính gồm:
+
++ Mã trụ sở chính.
+
++ Tên trụ sở chính.
+
++ Địa chỉ.
+
++ Email.
+
++ Số điện thoại.
+
+d. Chức năng xem báo cáo thống kê
+
+- Giúp cho người quản lý tổng biết được những thông tin như: báo cáo về
+tình trạng phòng ban, báo cáo về lương của nhân viên, báo cáo về dự án,
+báo cáo của mọi người với các chi nhánh, các chi nhánh với nhau, …
+
+e. Chức năng phân quyền
+
+- Giúp cho người quản lý thực hiện phân quyền cho các tài khoản.
+
+V. Phân tích cơ sở dữ liệu
+
+1. Lược đồ thực thể E-R
+
+Phân tích lược đồ E-R:
+
++ TruSoChinh-ChiNhanh là mối quan hệ một-nhiều vì một trụ sở chính có
+nhiều chi nhánh.
+
++ ChiNhanh-NhanVien là mối quan hệ một-nhiều vì một chi nhánh có nhiều
+nhân viên.
+
++ ChiNhanh-PhongBan là mối quan hệ một-nhiều vì một chi nhánh có nhiều
+phòng ban.
+
++ ChiNhanh-ChucVu là mối quan hệ một-nhiều vì một chi nhánh có nhiều
+chức vụ khác nhau.
+
++ ChinhSach-ChiNhanh là mối quan hệ một nhiều vì một chế độ chính sách
+có thể áp dụng cho nhiều chi nhánh.
+
++ PhongBan-DuAn là mối quan hệ một nhiều vì một phòng ban được tiếp nhận
+nhiều dự án.
+
++ PhongBan-NhanVien là mối quan hệ một nhiều vì một phòng ban có nhiều
+nhân viên.
+
++ ChucVu-NhanVien là mối quan hệ một nhiều vì có thể có nhiều nhân viên
+cùng một chức vụ.
+
++ DuAn-NhanVien là mối quan hệ một nhiều vì có nhiều nhân viên cùng tham
+gia vào một dự án.
+
++ NhanVien-Luong là mối quan hệ một nhiều vì một nhân viên có thể nhận
+nhiều loại lương.
+
+[A diagram of a company Description automatically generated]
+
+2. Lược đồ quan hệ
+
+[A diagram of a group of text Description automatically generated with
+medium confidence]
+
+3. Bảng tần suất truy cập các vị trí
+
+- W: tạo mới và ghi
+
+- E: sửa
+
+- D: xóa
+
+- R: đọc
+
+- H: tần suất cao
+
+- L: tần suất thấp
+
++------------+----------------+--------------+
+|   Thực thể |   Trụ sở chính |   Các trạm   |
++============+================+==============+
+|   ChiNhanh |   H.R, L.WED   |   H.R        |
++------------+----------------+--------------+
+|   PhongBan |   H.R, L.WED   |   H.R, L.WED |
++------------+----------------+--------------+
+|   NhanVien |   H.RWED       |   H.RWED     |
++------------+----------------+--------------+
+|   DuAn     |   H.RWED       |   H.RWED     |
++------------+----------------+--------------+
+|   ChucVu   |   H.R , L.WED  | H.R, L.WED   |
++------------+----------------+--------------+
+|   Luong    |   H.R, L.WED   |   H.R, L.WED |
++------------+----------------+--------------+
+
+Phân tích :
+
+- ChiNhanh : Các chi nhánh
+
++ Ở trụ sở chính thì việc đọc thực hiện ở tuần suất cao, việc thực hiện
+ghi, sửa, tạo mới và ghi thực hiện ở tuần suất thấp vì các trụ sở thường
+là cố định khó dịch chuyển sang vị trí khác.
+
++ Ở các trạm thì không có quyền sửa, tạo mới ghi và xóa chỉ có quyền đọc
+ở tần suất cao
+
+- PhongBan: Các phòng ban
+
++ Ở trụ sở chính việc đọc các Phòng ban ở tần suất cao, việc sửa xóa tạo
+mới bản ghi các Phòng ban ở tuần suất thấp vì không thể thường xuyên tạo
+mới phòng ban được
+
++ Ở các trạm việc đọc các Phòng ban ở tần suất cao, việc sửa xóa tạo mới
+bản ghi các Phòng ban ở tuần suất thấp vì không thể thường xuyên tạo mới
+phòng ban được
+
+- NhanVien: Nhân viên
+
++ Ở trụ sở chính việc đọc, ghi, sửa,xóa, thêm bản mới được thực hiện
+thường xuyên với tần suất cao vì mỗi năm sẽ có một lượng nhân viên tham
+gia công ty và 1 lượng nhân viên nghỉ làm.
+
++ Ở các trạm việc đọc, ghi, sửa,xóa, thêm bản mới được thực hiện thường
+xuyên với tần suất cao vì mỗi năm sẽ có một lượng nhân viên tham gia
+công ty và 1 lượng nhân viên nghỉ làm.
+
+- DuAn: Dự Án
+
++ Ở trụ sở chính việc đọc, ghi, sửa,xóa, thêm bản mới được thực hiện
+thường xuyên với tần suất cao vì sẽ thường xuyên có dự án cho công ty và
+các dự án sẽ kết thúc.
+
++ Ở các trạm việc đọc, ghi, sửa,xóa, thêm bản mới được thực hiện thường
+xuyên với tần suất cao vì sẽ thường xuyên có dự án cho chi nhánh và các
+dự án sẽ kết thúc.
+
++ ChucVu: Chức Vụ
+
++ Ở trụ sở chính có quyền đọc những dữ liệu về chức vụ với tần suất cao,
+nhưng việc thêm, sửa , xóa chức vụ với tần suất thấp vì chức vụ là một
+thứ ít thay đổi theo thời gian.
+
++ Ở các trạm có quyền đọc dữ liệu về chức vụ với tần suất cao nhưng việc
+thêm, sửa , xóa chức vụ với tần suất thấp vì chức vụ là một thứ ít thay
+đổi theo thời gian.
+
+- Luong: Lương
+
++ Ở trụ sở chính có quyền đọc những dữ liệu về lương với tần suất cao,
+nhưng việc thêm, sửa , xóa chức vụ với tần suất thấp vì lương thường lâu
+lâu mới đổi theo thị trường nói chung.
+
++ Ở các trạm có quyền đọc dữ liệu về lương với tần suất cao nhưng việc
+thêm, sửa , xóa lương với tần suất thấp vì lương thường lâu lâu mới đổi.
+
+PHẦN 3: THIẾT KẾ
+
+I.  Thiết kế hệ thống mạng tổng quan
+
+- Trụ sở chính: Đặt máy Server chính Hà Nội thực hiện các chức năng và
+lưu CSDL của toàn hệ thống.
+
+- Chi nhánh Huế: Đặt máy Server trạm 1 và các client tương ứng thực hiện
+chức năng và lưu toàn bộ CSDL thuộc Huế.
+
+- Chi nhánh Nam Định: Đặt máy Server trạm 2 và các client tương ứng thực
+hiện chức năng và lưu toàn bộ CSDL thuộc Nam Định.
+
+- Chi nhánh Vinh: Đặt máy Server trạm 3 và các client tương ứng thực
+hiện chức năng và lưu toàn bộ CSDL thuộc Nha Trang.
+
+- Chi nhánh Nha Trang: Đặt máy Server trạm 4 và các client tương ứng
+thực hiện chức năng và lưu toàn bộ CSDL thuộc Đồng Nai.
+
+- Chi nhánh Thái Bình: Đặt máy Server trạm 5 và các client tương ứng
+thực hiện chức năng và lưu toàn bộ CSDL thuộc Thái Bình.
+
+- Chi nhánh Đồng Nai: Đặt máy Server trạm 6 và các client tương ứng thực
+hiện chức năng và lưu toàn bộ CSDL thuộc Vinh.
+
+- Chi nhánh Bình Dương: Đặt máy Server trạm 7 và các client tương ứng
+thực hiện chức năng và lưu toàn bộ CSDL thuộc Bình Dương.
+
+II. Thiết kế cơ sở dữ liệu của hệ thống
+
+1. Cấu trúc các bảng dữ liệu của hệ thống
+
++ dbo.TruSoChinh
+
+  ---------------- -------------- ----------- ------ -----------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_TruSoChinh    VARCHAR(255)   NOT NULL    PK     ID Trụ sở chính
+  TenTruSoChinh    VARCHAR(255)                      Tên trụ sở
+  DiaChi           VARCHAR(255)                      Địa chỉ
+  Email            VARCHAR(255)                      Email
+  SoDienThoai      VARCHAR(255)                      Số điện thoại
+  ---------------- -------------- ----------- ------ -----------------
+
++ dbo.ChiNhanh
+
+  ---------------- -------------- ----------- ------ -----------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_ChiNhanh      VARCHAR(255)   NOT NULL    PK     ID Chi Nhánh
+  TenChiNhanh      VARCHAR(255)                      Tên chi nhánh
+  DiaChi           VARCHAR(255)                      Địa chỉ
+  Email            VARCHAR(255)                      Email
+  SoDienThoai      VARCHAR(255)                      Số điện thoại
+  ID_TruSoChinh    VARCHAR(255)               FK     ID Trụ sở chính
+  ---------------- -------------- ----------- ------ -----------------
+
++ dbo.PhongBan
+
+  ---------------- -------------- ----------- ------ ---------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_PhongBan      VARCHAR(255)   NOT NULL    PK     ID Phòng ban
+  TenPhongBan      VARCHAR(255)                      Tên phòng ban
+  Email            VARCHAR(255)                      Email
+  SoDienThoai      VARCHAR(255)                      Số điện thoại
+  ID_ChiNhanh      VARCHAR(255)   NOT NULL    FK     ID Chi nhánh
+  ---------------- -------------- ----------- ------ ---------------
+
++ dbo.DuAn
+
+  ---------------- -------------- ----------- ------ --------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_DuAn          VARCHAR(255)   NOT NULL    PK     ID Dự án
+  TenDuAn          VARCHAR(255)                      Tên dự án
+  NgayBatDau       DATE                              Ngày bắt đầu
+  ThoiHan          VARCHAR(255)                      Thời hạn
+  MoTa             VARCHAR(255)                      Mô tả
+  ID_ChiNhanh      VARCHAR(255)   NOT NULL    FK     ID Chi nhánh
+  ---------------- -------------- ----------- ------ --------------
+
++ dbo.NhanVien
+
+  ---------------- -------------- ----------- ------ -------------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_NhanVien      VARCHAR(255)   NOT NULL    PK     ID nhân viên
+  HoTen            VARCHAR(255)                      Tên nhân viên
+  NgaySinh         DATE                              Ngày sinh
+  GioiTinh         VARCHAR(255)                      Giới tính
+  DanToc           VARCHAR(255)                      Dân tộc
+  CCCD             VARCHAR(255)                      Căn cước công dân
+  SoDienThoai      VARCHAR(255)                      Số điện thoại
+  Email            VARCHAR(255)                      Email
+  DiaChi           VARCHAR(255)                      Địa chỉ
+  ID_ChucVu        VARCHAR(255)   NOT NULL    FK     ID Chức vụ
+  ID_ChiNhanh      VARCHAR(255)   NOT NULL    FK     ID Chi nhánh
+  ID_DuAn          VARCHAR(255)   NOT NULL    FK     ID Dự án
+  ID_PhongBan      VARCHAR(255)   NOT NULL    FK     ID Phòng ban
+  ---------------- -------------- ----------- ------ -------------------
+
++ dbo.Luong
+
+  ---------------- -------------- ----------- ------ --------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_Luong         VARCHAR(255)   NOT NULL    PK     ID Lương
+  MucLuong         VARCHAR(255)                      Mức lương
+  ID_NhanVien      VARCHAR(255)   NOT NULL    FK     ID Nhân Viên
+  ---------------- -------------- ----------- ------ --------------
+
++ dbo.ChucVu
+
+  ---------------- -------------- ----------- ------ --------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_ChucVu        VARCHAR(255)   NOT NULL    PK     ID Chức vụ
+  TenChucVu        VARCHAR(255)                      Tên chức vụ
+  BacLuong         VARCHAR(255)                      Bậc lương
+  ID_ChiNhanh      VARCHAR(255)   NOT NULL    FK     ID Chi nhánh
+  ---------------- -------------- ----------- ------ --------------
+
++ dbo.ChinhSach
+
+  ---------------- -------------- ----------- ------ ----------------
+  Tên thuộc tính   Kiểu           Ràng buộc   Khóa   Mô tả
+  ID_ChinhSach     VARCHAR(255)   NOT NULL    PK     ID Chính sách
+  TenChinhSach     VARCHAR(255)                      Tên chính sách
+  MoTa             VARCHAR(255)                      Mô tả
+  ---------------- -------------- ----------- ------ ----------------
+
+2. Quan hệ giữa các bảng
+
+[A computer screen shot of a diagram Description automatically
+generated]
+
+II. Thiết kế cơ sở dữ liệu phân tán
+
+1. Lược đồ phục vụ cho phân mảnh ngang dẫn xuất
+
+[]
+
+2. Thiết kế phân mảnh ngang, nhân bản
+
+-Vị trí 1: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Huế.
+
+-Vị trí 2: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Nam Định.
+
+-Vị trí 3: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Vinh.
+
+-Vị trí 4: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Nha Trang.
+
+-Vị trí 5: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Thái Bình.
+
+-Vị trí 6: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Đồng Nai.
+
+-Vị trí 7: Server chi nhánh, nơi đặt máy trạm tại chi nhánh Bình Dương.
+
+-Vị trí 8: Server tổng, nơi đặt máy chủ trụ sở chính ở Hà Nội.
+
+Để phân mảnh, chúng tôi chọn quan hệ tổng thể làm tiêu chí để phân mảnh,
+phân thành 7 mảnh đặt tại 7 vị trí để quản lý các chi nhánh ở các vùng
+lân cận, sau đó dựa vào các mảnh của chi nhánh sẽ dẫn xuất đến sự phân
+mảnh của các quan hệ tổng thể còn lại.
+
++--------+-------------+--------------+--------------+--------------+
+|   Mảnh |   Chi Nhánh |   Cơ sở dữ   |   Phân mảnh  |   Phân mảnh  |
+|        |             |   liệu       |   ngang      |   ngang dẫn  |
+|        |             |              |              |   xuất       |
++--------+-------------+--------------+--------------+--------------+
+
++-----+-------+-----------------+-----------------+-----------------+
+|   1 |   Huế |   Quản lý nhân  | -   Bảng phân   | -   Bảng phân   |
+|     |       |   viên ở Huế    |       mảnh:     |       mảnh:     |
+|     |       |                 |       ChiNhanh  |       PhongBan  |
+|     |       |                 |                 |                 |
+|     |       |                 | -   Điều kiện   | -   Điều kiện   |
+|     |       |                 |       phân tán: |       dẫn xuất: |
+|     |       |                 |       ChiNhanh1 |       PhongBan1 |
+|     |       |                 |       =         |       =         |
+|     |       |                 |                 |       PhongBan  |
+|     |       |                 |  σID_ChiNhanh=‘ |                 |
+|     |       |                 | CN01’(ChiNhanh) |   ⋈ ChiNhanh1   |
++=====+=======+=================+=================+=================+
+|     |       |                 |   -             | -   Bảng phân   |
+|     |       |                 |                 |       mảnh:     |
+|     |       |                 |                 |       NhanVien  |
+|     |       |                 |                 |                 |
+|     |       |                 |                 | -   Điều kiện   |
+|     |       |                 |                 |       dẫn xuất: |
+|     |       |                 |                 |       NhanVien1 |
+|     |       |                 |                 |                 |
+|     |       |                 |                 |      =NhanVien⋈ |
+|     |       |                 |                 |       ChiNhanh1 |
++-----+-------+-----------------+-----------------+-----------------+
+|     |       |                 |   -             | -   Bảng phân   |
+|     |       |                 |                 |       mảnh:     |
+|     |       |                 |                 |       ChucVu    |
+|     |       |                 |                 |                 |
+|     |       |                 |                 | -   Điều kiện   |
+|     |       |                 |                 |       dẫn xuất: |
+|     |       |                 |                 |       ChucVu1 = |
+|     |       |                 |                 |       ChucVu ⋈  |
+|     |       |                 |                 |       ChiNhanh1 |
++-----+-------+-----------------+-----------------+-----------------+
+|     |       |                 |   -             | -   Bảng phân   |
+|     |       |                 |                 |       mảnh:     |
+|     |       |                 |                 |       DuAn      |
+|     |       |                 |                 |                 |
+|     |       |                 |                 | -   Điều kiện   |
+|     |       |                 |                 |       dẫn xuất: |
+|     |       |                 |                 |       DuAn1     |
+|     |       |                 |                 |                 |
+|     |       |                 |                 |   = DuAn⋈       |
+|     |       |                 |                 |   PhongBan1     |
++-----+-------+-----------------+-----------------+-----------------+
+|     |       |                 |   -             | -   Bảng phân   |
+|     |       |                 |                 |       mảnh:     |
+|     |       |                 |                 |       Luong     |
+|     |       |                 |                 |                 |
+|     |       |                 |                 | -   Điều kiện   |
+|     |       |                 |                 |       dẫn xuất: |
+|     |       |                 |                 |       Luong1    |
+|     |       |                 |                 |                 |
+|     |       |                 |                 |   = Luong ⋈     |
+|     |       |                 |                 |   NhanVien1     |
++-----+-------+-----------------+-----------------+-----------------+
+
++-----+------------+----------------+----------------+----------------+
+| 2   | Nam Định.  | Quản lý nhân   | -   Bảng phân  | -   Bảng phân  |
+|     |            | viên ở Nam     |       mảnh:    |       mảnh:    |
+|     |            | Định.          |       ChiNhanh |       PhongBan |
+|     |            |                |                |                |
+|     |            |                |   Điều kiện    | -   Điều kiện  |
+|     |            |                |   phân tán:    |       dẫn      |
+|     |            |                |   ChiNhanh2 =  |       xuất:    |
+|     |            |                |   σ            |                |
+|     |            |                | ID_ChiNhanh=‘C |      PhongBan2 |
+|     |            |                | N02’(ChiNhanh) |       =        |
+|     |            |                |                |       PhongBan |
+|     |            |                |                |                |
+|     |            |                |                |   ⋈ ChiNhanh2  |
++=====+============+================+================+================+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       NhanVien |
+|     |            |                |                |                |
+|     |            |                |                |   Điều kiện    |
+|     |            |                |                |   dẫn xuất:    |
+|     |            |                |                |   NhanVien2    |
+|     |            |                |                |   =NhanVien⋈   |
+|     |            |                |                |   ChiNhanh2    |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       ChucVu   |
+|     |            |                |                |                |
+|     |            |                |                |   Điều kiện    |
+|     |            |                |                |   dẫn xuất:    |
+|     |            |                |                |   ChucVu2 =    |
+|     |            |                |                |   ChucVu ⋈     |
+|     |            |                |                |   ChiNhanh2    |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       DuAn     |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       DuAn2    |
+|     |            |                |                |                |
+|     |            |                |                |   = DuAn⋈      |
+|     |            |                |                |   PhongBan2    |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       Luong    |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       Luong2   |
+|     |            |                |                |                |
+|     |            |                |                |   = Luong ⋈    |
+|     |            |                |                |   NhanVien2    |
++-----+------------+----------------+----------------+----------------+
+|   3 |   Vinh     |   Quản lý nhân | -   Bảng phân  | -   Bảng phân  |
+|     |            |   viên ở Vinh. |       mảnh:    |       mảnh:    |
+|     |            |                |       ChiNhanh |       PhongBan |
+|     |            |                |                |                |
+|     |            |                | -   Điều kiện  | -   Điều kiện  |
+|     |            |                |       phân     |       dẫn      |
+|     |            |                |       tán:     |       xuất:    |
+|     |            |                |                |                |
+|     |            |                |      ChiNhanh3 |      PhongBan3 |
+|     |            |                |       =        |       =        |
+|     |            |                |       σ        |       PhongBan |
+|     |            |                | ID_ChiNhanh=‘C |                |
+|     |            |                | N03’(ChiNhanh) |   ⋈ ChiNhanh3  |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       NhanVien |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       NhanV    |
+|     |            |                |                | ien3=NhanVien⋈ |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh3 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       ChucVu   |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       ChucVu3  |
+|     |            |                |                |       = ChucVu |
+|     |            |                |                |       ⋈        |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh3 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       DuAn     |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       DuAn3    |
+|     |            |                |                |                |
+|     |            |                |                |   = DuAn⋈      |
+|     |            |                |                |   PhongBan3    |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       Luong    |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       Luong3   |
+|     |            |                |                |                |
+|     |            |                |                |   = Luong ⋈    |
+|     |            |                |                |   NhanVien3    |
++-----+------------+----------------+----------------+----------------+
+| 4   | Nha Trang  | Quản lý nhân   | -   Bảng phân  | -   Bảng phân  |
+|     |            | viên ở Nha     |       mảnh:    |       mảnh:    |
+|     |            | Trang          |       ChiNhanh |       PhongBan |
+|     |            |                |                |                |
+|     |            |                | Điều kiện phân | -   Điều kiện  |
+|     |            |                | tán: ChiNhan4  |       dẫn      |
+|     |            |                | =              |       xuất:    |
+|     |            |                | σ              |                |
+|     |            |                | ID_ChiNhanh=‘C |      PhongBan4 |
+|     |            |                | N04’(ChiNhanh) |       =        |
+|     |            |                |                |       PhongBan |
+|     |            |                |                |                |
+|     |            |                |                | -   ⋈          |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh4 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       NhanVien |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien4 |
+|     |            |                |                |                |
+|     |            |                |                |     =NhanVien⋈ |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh4 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       ChucVu   |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       ChucVu4  |
+|     |            |                |                |       = ChucVu |
+|     |            |                |                |       ⋈        |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh4 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       DuAn     |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       DuAn4    |
+|     |            |                |                |                |
+|     |            |                |                | -   = DuAn⋈    |
+|     |            |                |                |                |
+|     |            |                |                |      PhongBan4 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       Luong    |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       Luong4   |
+|     |            |                |                |                |
+|     |            |                |                | -   = Luong ⋈  |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien4 |
++-----+------------+----------------+----------------+----------------+
+| 5   | Thái Bình  | Quản lý nhân   | -   Bảng phân  | -   Bảng phân  |
+|     |            | viên ở Thái    |       mảnh:    |       mảnh:    |
+|     |            | Bình           |       ChiNhanh |       PhongBan |
+|     |            |                |                |                |
+|     |            |                | Điều kiện phân | -   Điều kiện  |
+|     |            |                | tán: ChiNhanh5 |       dẫn      |
+|     |            |                | =              |       xuất:    |
+|     |            |                | σ              |                |
+|     |            |                | ID_ChiNhanh=‘C |      PhongBan5 |
+|     |            |                | N05’(ChiNhanh) |       =        |
+|     |            |                |                |       PhongBan |
+|     |            |                |                |                |
+|     |            |                |                | -   ⋈          |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh5 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       NhanVien |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien5 |
+|     |            |                |                |                |
+|     |            |                |                |     =NhanVien⋈ |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh5 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       ChucVu   |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       ChucVu5  |
+|     |            |                |                |       = ChucVu |
+|     |            |                |                |       ⋈        |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh5 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       DuAn     |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       DuAn5    |
+|     |            |                |                |                |
+|     |            |                |                | -   = DuAn⋈    |
+|     |            |                |                |                |
+|     |            |                |                |      PhongBan5 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       Luong    |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       Luong5   |
+|     |            |                |                |                |
+|     |            |                |                | -   = Luong ⋈  |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien5 |
++-----+------------+----------------+----------------+----------------+
+| 6   | Đồng Nai   | Quản lý nhân   | -   Bảng phân  | -   Bảng phân  |
+|     |            | viên ở Đồng    |       mảnh:    |       mảnh:    |
+|     |            | Nai            |       ChiNhanh |       PhongBan |
+|     |            |                |                |                |
+|     |            |                | Điều kiện phân | -   Điều kiện  |
+|     |            |                | tán: ChiNhanh6 |       dẫn      |
+|     |            |                | =              |       xuất:    |
+|     |            |                | σ              |                |
+|     |            |                | ID_ChiNhanh=‘C |      PhongBan6 |
+|     |            |                | N06’(ChiNhanh) |       =        |
+|     |            |                |                |       PhongBan |
+|     |            |                |                |                |
+|     |            |                |                | -   ⋈          |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh6 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       NhanVien |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien6 |
+|     |            |                |                |                |
+|     |            |                |                |     =NhanVien⋈ |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh6 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       ChucVu   |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       ChucVu6  |
+|     |            |                |                |       = ChucVu |
+|     |            |                |                |       ⋈        |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh6 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       DuAn     |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       DuAn6    |
+|     |            |                |                |                |
+|     |            |                |                | -   = DuAn⋈    |
+|     |            |                |                |                |
+|     |            |                |                |      PhongBan6 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       Luong    |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       Luong6   |
+|     |            |                |                |                |
+|     |            |                |                | -   = Luong ⋈  |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien6 |
++-----+------------+----------------+----------------+----------------+
+| 7   | Bình Dương | Quản lý nhân   | -   Bảng phân  | -   Bảng phân  |
+|     |            | viên ở Bình    |       mảnh:    |       mảnh:    |
+|     |            | Dương          |       ChiNhanh |       PhongBan |
+|     |            |                |                |                |
+|     |            |                | Điều kiện phân | -   Điều kiện  |
+|     |            |                | tán: ChiNhanh7 |       dẫn      |
+|     |            |                | =              |       xuất:    |
+|     |            |                | σ              |                |
+|     |            |                | ID_ChiNhanh=‘C |      PhongBan7 |
+|     |            |                | N07’(ChiNhanh) |       =        |
+|     |            |                |                |       PhongBan |
+|     |            |                |                |                |
+|     |            |                |                | -   ⋈          |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh7 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       NhanVien |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien7 |
+|     |            |                |                |                |
+|     |            |                |                |     =NhanVien⋈ |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh7 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       ChucVu   |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       ChucVu7  |
+|     |            |                |                |       = ChucVu |
+|     |            |                |                |       ⋈        |
+|     |            |                |                |                |
+|     |            |                |                |      ChiNhanh7 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       DuAn     |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       DuAn7    |
+|     |            |                |                |                |
+|     |            |                |                | -   = DuAn⋈    |
+|     |            |                |                |                |
+|     |            |                |                |      PhongBan7 |
++-----+------------+----------------+----------------+----------------+
+|     |            |                | -              | -   Bảng phân  |
+|     |            |                |                |       mảnh:    |
+|     |            |                |                |       Luong    |
+|     |            |                |                |                |
+|     |            |                |                | -   Điều kiện  |
+|     |            |                |                |       dẫn      |
+|     |            |                |                |       xuất:    |
+|     |            |                |                |       Luong7   |
+|     |            |                |                |                |
+|     |            |                |                | -   = Luong ⋈  |
+|     |            |                |                |                |
+|     |            |                |                |      NhanVien7 |
++-----+------------+----------------+----------------+----------------+
+
+3. Thiết kế định vị và vẽ sơ đồ định vị
+
+1.  Thiết kế sơ đồ định vị.
+
+Phân mảnh ngang nguyên thủy và phân mảnh ngang dẫn xuất để chia quan hệ
+tổng thể thành 7 mảnh đặt tại 7 chi nhánh sau:
+
+- Server chính đặt tại Hà Nội chứa thông tin của toàn bộ hệ thống:
+TruSoChinh( thông tin trụ sở), ChinhSach (các chính sách), ChiNhanh
+(thông tin chi nhánh), PhongBan (thông tin phòng ban), NhanVien (thông
+tin nhân viên), Luong (thông tin lương), DuAn (thông tin dự án).
+
+- Chi nhánh 1: Máy trạm 1 đặt tại Huế chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+- Chi nhánh 2: Máy trạm 1 đặt tại Nam Định chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+- Chi nhánh 3: Máy trạm 1 đặt tại Vinh chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+- Chi nhánh 4: Máy trạm 1 đặt tại Nha Trang chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+- Chi nhánh 5: Máy trạm 1 đặt tại Thái Bình chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+- Chi nhánh 6: Máy trạm 1 đặt tại Đồng Nai chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+- Chi nhánh 7: Máy trạm 1 đặt tại Hải Dương chứa thông tin của chi nhánh
+đó:các ChiNhanh (thông tin chi nhánh), PhongBan (thông tin phòng ban),
+NhanVien (thông tin nhân viên), Luong (thông tin lương), DuAn (thông tin
+dự án) của chi nhánh đó.
+
+3.2 Vẽ sơ đồ định vị.
+
+[A diagram of a company Description automatically generated]
+
+4. Lược đồ ánh xạ
+
+[]
+
+IV. Thiết kế lược đồ nhân bản, đòng bộ hoá
+
+[]
+
+-   Thông tin tại máy chủ: Các ChinhSach, TruSoChinh tại máy chủ sẽ được
+      nhân bản tại các máy trạm (đồng bộ hóa về máy trạm mỗi khi có sự
+      thay đổi từ máy chủ). Nhân bản có thể thực thi giữa những CSDL
+      trên cùng một server hay những server khác nhau được kết nối bởi
+      mạng LANs,WANs hay Internet.
+
+-   Nếu tại máy chủ có sự cập nhật thông tin NhanVien, DuAn, PhongBan,
+      ChiNhanh, Luong, ChucVu thì sẽ được đồng bộ hóa về trụ sở nó thuộc
+      về.
+
+-   Thông tin tại máy trạm: NhanVien, DuAn, PhongBan, ChiNhanh, Luong,
+      ChucVu được cập nhật thì sẽ được đồng bộ hóa về máy chủ mỗi khi có
+      thông tin.
+
+V. Thiết kế vật lý các trạm
+
++-------+------------------+-----------------------------------------+
+|   STT |   Tên bảng       |   Ý nghĩa                               |
++=======+==================+=========================================+
+|   1   |   dbo.NhanVien   |   Nhân viên, chứa thông tin liên quan   |
+|       |                  |   đến nhân viên phục vụ quản lý nhân    |
+|       |                  |   viên.                                 |
++-------+------------------+-----------------------------------------+
+|   2   |   dbo.PhongBan   |   Phòng ban, chứa thông tin liên quan   |
+|       |                  |   đến phòng ban phục vụ quản lý phòng   |
+|       |                  |   ban.                                  |
++-------+------------------+-----------------------------------------+
+|   3   |   dbo.ChucVu     |   Chức vụ, chứa thông tin liên quan đến |
+|       |                  |   chức vụ phục vụ quản lý chức vụ.      |
++-------+------------------+-----------------------------------------+
+|   4   |   Dbo. Luong     |   Lương, chứa thông tin liên quan đến   |
+|       |                  |   lương phục vụ quản lý lương.          |
++-------+------------------+-----------------------------------------+
+|   5   |   dbo.DuAn       |   Dự án, chứa thông tin liên quan đến   |
+|       |                  |   phòng ban phục vụ quản lý dự án.      |
++-------+------------------+-----------------------------------------+
+|   6   |   dbo.ChiNhanh   |   Chi nhánh, chứa thông tin liên quan   |
+|       |                  |   đến chi nhánh phục vụ quản lý chi     |
+|       |                  |   nhánh.                                |
++-------+------------------+-----------------------------------------+
+|   7   |   dbo.ChinhSach  |   Chính sách, chứa thông tin liên quan  |
+|       |                  |   đến chính sách phục vụ quản lý chính  |
+|       |                  |   sách.                                 |
++-------+------------------+-----------------------------------------+
+|   8   |   dbo.TruSoChinh |   Trụ sở chính, chứa thông tin liên     |
+|       |                  |   quan đến trụ sở chính phục vụ quản lý |
+|       |                  |   trụ sở chính.                         |
++-------+------------------+-----------------------------------------+
+
+PHẦN 4: CÀI ĐẶT
+
+I. Cài đặt SQL Server 2019
+
+1.Cài đặt SQL Server 2019 bản developer
+
+Bước: Truy cập vào đường link để tải (tải bản developer):
+https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+Bước: Mở tệp .exe vừa tải
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+Bước: Chọn Download Media sau đó chọn dạng tải về là ISO và chọn đường
+dẫn rồi ấn download
+
+[Graphical user interface Description automatically generated]
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, Phông chữ Mô tả được
+tạo tự động]
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, phần mềm Mô tả được
+tạo tự động]
+
+Bước: Sau khi tải xong, nhấn close
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, thiết kế Mô tả được
+tạo tự động]
+
+Bước: Mở tệp .iso và chạy setup.exe
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+[Ảnh có chứa văn bản, phần mềm, Trang web, Biểu tượng máy tính Mô tả
+được tạo tự động]
+
+Bước: Giao diện cài đặt hiện lên, chọn Installation sau đó chọn tiếp New
+SQL server ...
+
+[Graphical user interface, application Description automatically
+generated]
+
+[]
+
+Bước: Cài đặt
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Chọn next
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Chọn Next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Chọn Perform a new installation of SQL Server 2019
+
+[]
+
+Bước: Giao diện sau khi tích vào cài mới, mặc định là Developer, ta cần
+chuyển sang Evaluation và ấn Next
+
+[]
+
+Bước: Chọn Next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Chọn chức năng phù hợp với môn học ở mục Features sau đó ấn nút
+Next
+
+[]
+
+  Bước: Ta có thể đặt tên cho Instance (tên có thể đặt tùy ý, không dấu,
+  không khoảng trắng) sau đó nhấn next .
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Nhấn next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Ở mục này, ta bấm chọn chức năng Mix Mode. Đây là chức năng bảo
+mật cho cơ sở dữ liệu.
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Tiếp theo các ta nhập mật khẩu cho tài khoản supper admin(sa) là
+1234567.
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Và cuối cùng nhấn nút Add current User để thêm tài khoản.
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Cuối cùng nhấn next cho đến mục Ready to Install.
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Chọn next
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Chọn next
+
+[]
+
+Bước: Ấn Install
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Đang trong quá trình cài đặt
+
+[]
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Giao diện cài đặt thành công -> ấn Close
+
+[]
+
+2.Cài đặt SQL Server Management Studio Tools (SSMS).
+
+* Giới thiệu: SSMS là một ứng dụng phần mềm thiết kế bởi Microsoft, ra
+mắt lần đầu năm 2005. Ứng dụng này cho phép lập trình viên cấu hình,
+quản lý và quản trị bộ máy cơ sở dữ liệu (database engine) SQL Server.
+SSMS phổ biến và được sử dụng rộng rãi trong cộng đồng lập trình viên và
+quản trị viên cơ sở dữ liệu bởi những ưu điểm
+
+-Miễn phí
+
+-Trải nghiệm người dùng tốt
+
+-Nhiều lựa chọn add-in
+
+-Dễ cài đặt
+
+Bước: Click vào Install SQL Server Management Tools
+
+[Graphical user interface, text, application, Word Description
+automatically generated]
+
+Hoặc ấn vào đường link để cài đặt:
+
+https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-
+ssms?redirectedfrom=MSDN&view=sql-server-ver15
+
+[]
+
+[]
+
+Bước: Sau khi download tachạy file “SSMS-Setup-ENU.exe” để cài đặt
+
+[]
+
+Bước: Chọn Install để cài đặt, quá trình cài đặt diễn ra hoàn toàn tự
+động
+
+[]
+
+Bước: Chờ cho đến khi quá trình cài đặt hoàn tất và khởi động lại server
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, thiết kế Mô tả được
+tạo tự động]
+
+II.Cài đặt tường lửa (firewall) để mở cổng cho SQL
+
+Giới thiệu: Tường lửa hay firewall là một hệ thống bảo mật mạng giám sát
+và kiểm soát lưu lượng mạng đến và đi dựa trên các quy tắc bảo mật được
+xác định trước. Một tường lửa thường thiết lập một rào cản giữa một mạng
+nội bộ đáng tin cậy và mạng bên ngoài không tin cậy, chẳng hạn như
+Internet.
+
+Tắt tường lửa
+
+Bước: Tìm kiếm Firewall trong thanh công cụ
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Chọn Turn Windows Defender Firewall on or off
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+Bước: Thực hiện tắt tường lửa -> chọn Turn off Windows Defender Firewall
+ở cả 2 mục-> nhấn OK
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Trang web, Website Mô tả được
+tạo tự động]
+
+Bước: Tường lửa đã được tắt thành công
+
+[]
+
+Chú ý : Nếu như không tắt được tường lửa thì có thể là bạn đang chạy
+trình duyệt diệt virus. Hãy xóa / tắt trình duyệt diệt virus đi thì mới
+tắt được tường lửa.
+
+2.Mở port 1433
+
+Mục đích : Theo mặc định, SQL Server sử dụng Cổng TCP 1433 để giao tiếp
+với các ứng dụng. Nếu ta đang chạy một ứng dụng yêu cầu kết nối với SQL
+Server, ta phải bật cổng 1433 cho SQL Server để kết nối. Sau đây là các
+bước để mở port 1433
+
+Bước: Trong thanh tìm kiếm, tìm SQL Server 2019 Configuration Manager
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, Trang web Mô tả được
+tạo tự động]
+
+Bước: Chọn SQL Server Network Configuration + Protocols for CSDLPTNHOM2
+
+[Ảnh có chứa văn bản, Phông chữ, số, hàng Mô tả được tạo tự động]
+
+Bước: Trong TCP/IP, nhấn enabled.
+
+[]
+
+Bước: Chọn Properties
+
+[]
+
+Bước: Nhấn IP Addresses, lướt xuống dòng cuối cùng IPAll và chọn TCP
+Port là 1433
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, màn hình, số Mô tả được tạo tự
+động]
+
+Bước: Chọn SQL Server Sevices và Restart lại Server đã config và restart
+lại.
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, số Mô tả được tạo tự
+động]
+
+3.Thêm New Rule: csdpltnhom2
+
+Mục đích: Để mở một cổng 1433 trong tường lửa Windows để truy cập TCP
+Bước: Chọn Advanced Settings
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, phần mềm Mô tả được
+tạo tự động]
+
+Bước: Chọn Inbound Rules -> New Rule
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Rule Type chuyển sang Port => Chọn Next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn specific local ports + cổng 1433 -> ấn Next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Tiếp đến ta Chọn Allow the connection (theo mặc định) rồi ấn Next
+
+[]
+
+Bước: Chọn tất cả và bấm next
+
+[]
+
+Bước: Thực hiện đặt tên nhóm (CSDLPTNHOM2) -> ấn Finish
+
+[Graphical user interface, application Description automatically
+generated]
+
+Đã hoàn thành bước thức hiện cài đặt = > Cài đặt thành công
+
+[A screenshot of a computer Description automatically generated]
+
+4.Thêm New Rule sqlserver
+
+Mục đích: Để mở quyền truy cập vào SQL Server khi sử dụng cổng động
+(dynamic ports)
+
+Bước: Trong mục Rule Type, chọn Program -> ấn Next
+
+[Ảnh có chứa văn bản, phần mềm, Biểu tượng máy tính, Trang web Mô tả
+được tạo tự động]
+
+Bước: Chọn mục This program path và ấn Browse để chọn file thích hợp
+
+[A screenshot of a computer Description automatically generated]
+
+C:\Program Files\Microsoft SQL Server\MSSQL15.CSDLPTNHOM2\MSSQL\Binn
+
+[]
+
+[Graphical user interface, application, Teams Description automatically
+generated]
+
+Bước: Đặt tên cho Rule mới là sqlserver
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+5.Thêm New Rule port Udp_1434:
+
+Mục đích: Để mở một cổng 1434 trong tường lửa Windows để truy cập UDP
+
+Bước: Tương tự Chọn mục Protocol and Ports -> chọn UDP và local ports :
+1434 -> ấn Next
+
+[A screenshot of a computer Description automatically generated with
+medium confidence]
+
+Bước: Đặt tên udp1434 -> Finish
+
+[A screenshot of a computer Description automatically generated with
+medium confidence]
+
+Bước: Hoàn thành tạo mới các Rule
+
+[Graphical user interface, application Description automatically
+generated]
+
+III. Chuẩn bị folder để chứa các dữ liệu trao đổi trong quá trình update dữ liệu từ các phân mảnh về cơ sở dữ liệu gốc, và từ cơ sở dữ liệu gốc đến các phân mảnh.
+
+REPLDATA
+
+Bước: Tạo 1 folder C:\REPLDATA để chứa các dữ liệu trao đổi trong quá
+trình update dữ liệu từ các phân mảnh về cơ sở dữ liệu gốc, và từ cơ sở
+dữ liệu gốc đến các phân mảnh.
+
+Bước: Click chuột phải vào folder REPLDATA > Properties
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, thiết kế Mô tả được
+tạo tự động]
+
+[Ảnh có chứa văn bản, phần mềm, Biểu tượng máy tính, Trang web Mô tả
+được tạo tự động]
+
+Bước: Chọn tab Sharing > Share.
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Chọn Everyone > click Add
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: chọn quyền Read/Write như trong hình.
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, màn hình Mô tả được
+tạo tự động]
+
+Bước: click nút lệnh Share
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, màn hình Mô tả được
+tạo tự động]
+
+Dell\repldata : Dell là tên của máy
+
+Bước: nhấn Done -> kết quả cuối cùng của khi hoàn thành được hết tất cả
+các bước phần cài đặt thì folder sẽ gồm:
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, số Mô tả được tạo tự
+động]
+
+IV.Kết nối máy trạm và các chi nhánh bằng cách sử dụng phần mềm cài đặt VPN Radmin VPN
+
+1.Tải phần mềm Radmin VPN
+
+Giới thiệu: phần mềm Radmin VPN là phần mềm dùng để tạo mạng riêng ảo
+(VPN). Cho phép thiết lập kết nối bảo mật giữa các máy tính qua internet
+như thể các máy tính này kết nối với nhau trên mạng LAN.
+
+Bước: Cài đặt phần mềm Radmin VPN, theo link dưới:
+https://www.radmin-vpn.com/
+
+[Graphical user interface, website Description automatically generated]
+
+Bước: Chọn folder để lưu Radmin > save để lưu file .exe tải về
+
+[Graphical user interface Description automatically generated]
+
+Bước: Mở file .exe vừa tải về
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Thực hiện cài đặt Install Radmin_VPN
+
+[A screenshot of a computer Description automatically generated]
+
+Cài đặt thành công.
+
+Bước: Tạo Network cho máy chủ.
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Điền các thông tin như tên network và mật khẩu. Nhấn vào Create
+Network
+
+Ví Dụ:
+
++network name: CSDLPTNHOM2
+
++password:1234567
+
+[Graphical user interface Description automatically generated]
+
+Các máy trạm sẽ kết nối với nhau và kết nối với máy chủ bằng VPN này.
+Sau khi đã kết nối ta có giao diện như sau:
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, Phông chữ, số Mô tả được tạo tự
+động]
+
+[]Bước: Kiểm tra kết nối bằng cách chuột phải vào thành viên và click
+ping
+
+Và kết quả ra như hình sau nghĩa là các máy đã kết nối với nhau thành
+công.
+
+[A screenshot of a computer Description automatically generated]
+
+2.Bật TCP IP và thêm IP các máy trạm.
+
+Bước: mở Sql Server Configuration Manager để cấu hình IP cho từng máy.
+
++ TCP/IP : Enable
+
++ Named Pipes: Disabled
+
+[]
+
+Bước: Mở TCP/IP > IP Addresses
+
+[Graphical user interface, application Description automatically
+generated]
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, Hệ điều hành Mô tả
+được tạo tự động]
+
+Cài đặt các IP như sau:
+
++ Active: Yes
+
++ Enable: Yes
+
++ Tất cả các TCP Port: 1433
+
+IP1: 26.139.7.224 -> là IP máy chủ
+
+Các IP còn lại đều là máy trạm.
+
+[Ảnh có chứa văn bản, phần mềm, số, Biểu tượng máy tính Mô tả được tạo
+tự động]
+
+Bước: Restart lại server
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình Mô tả được tạo tự động]
+
+3.Tạo tài khoản sa (nếu chưa có)
+
+Bước: Chạy SQL Server Management Studio và login bằng Windows
+Authentication như thông thường.
+
+[Graphical user interface Description automatically generated]
+
+Bước. Tìm đến Security > Logins > sa
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, Biểu tượng máy tính
+Mô tả được tạo tự động]
+
+Bước: Click chuột phải chọn Properties
+
+[Ảnh có chứa văn bản, phần mềm, số, Trang web Mô tả được tạo tự động]
+
+Bước: Vào General để đổi mật khẩu -> Bỏ check Enforce password policy.
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+Bước: Sang chọn mục Status -> các mục như dưới hình -> ấn Ok
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+V. Tạo database 
+
+Bước: Tạo DB
+
+C:\Program Files\Microsoft SQL Server\MSSQL15.CSDLPTNHOM2\MSSQL\DATA
+
+[Graphical user interface, text, application Description automatically
+generated]
+
+VI. Configure distribution
+
+- Distributor: Là một server mà chứa CSDL phân tán (distribution
+database) và lưu trữ metadata,history data và transaction. SQL Server sử
+dụng CSDL phân tán để lưu và chuyển(store_and_forward) dữ liệu nhân bản
+từ Publisher đến các Subscriber. Có 2 loại Distributor : Local
+Distributor và remote Distributor.
+
+1.Đăng nhập và bật SQL Server Agent
+
+  -Bước: Mở SQL Server và thực hiện việc đăng nhập
+
+[]
+
+-Bước: Sau khi đăng nhập, chọn mục SQL Server Agent-> Click chuột phải
+->Chọn start
+
+[Graphical user interface, application Description automatically
+generated]
+
+-Tiếp tục ấn Yes để thực hiện bật Server Agent
+
+[Graphical user interface Description automatically generated]
+
+2.Confiruge distribution
+
+-Bước: Sau khi chạy Agent,tiếp theo chọn mục Replication ->Click chuột
+phải chọn Configure Distribution
+
+[Graphical user interface, application Description automatically
+generated]
+
+-Tiếp tục thực hiện các thao tác Next đến Snapshot Folder
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, màn hình Mô tả được
+tạo tự động]
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, màn hình, phần mềm Mô tả được
+tạo tự động]
+
+[Ảnh có chứa văn bản, đồ điện tử, ảnh chụp màn hình, phần mềm Mô tả được
+tạo tự động]
+
+-Điền đường dẫn của folder REPTDATA tạo trước đó -> ấn Next
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+-Tiếp tục ấn Next
+
+[Graphical user interface, application, Word Description automatically
+generated]
+
+[]
+
+-Chọn 2 mục như dưới -> ấn Next
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, màn hình Mô tả được
+tạo tự động]
+
+-Chọn các mục tương ứng sau đây (không bắt buộc y hệt) -> ấn Next
+
+[A screenshot of a computer Description automatically generated]
+
+-Cuối cùng ấn Finish để hoàn thành Configure
+
+[]
+
+[A screenshot of a computer Description automatically generated]
+
+-Đỏ 2 chỗ trên là không sao , do không cho SQL Server Agent tự động chạy
+mỗi khi mở SQL Server nên mới báo lỗi,tuy nhiên đến bước này là config
+thành công rồi.
+
+VII.Tạo Publication Database
+
+- Replication – Nhân bản dữ liệu: Replication là công nghệ sao chép,
+phân phối dữ liệu và là một trong những giải pháp ‘khôi phục dữ liệu sau
+thảm họa’ có sẵn trong SSMS rất hữu ích để duy trì bản sao thứ hai hoặc
+bản sao dự phòng của các đối tượng (Table, View, Stored Procedure) và
+CSDL.
+
+Replication trong Microsoft SQL Server có 4 loại sau:
+
++Snapshot Replication
+
++Transactional Replication
+
++Peer-to-Peer Replication
+
++Merge Replication
+
+Tạo Transactional Replication
+
+Giới thiệu : Nhân bản giao dịch một chiều là một kỹ thuật được sử dụng
+để sao chép tự động liên tục hoặc định kỳ các dữ liệu giao dịch
+(Transaction Data) một chiều từ Publisher đến Subscriber.
+
+Bước: Trong mục Replication tìm tới Local Publications . Chuột phải vào
+Local Publication -> chọn New Publication…
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Cửa sổ New Publication Wizard hiện lên. Chọn Database chứa các
+bảng muốn nhân bản. Click next
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, màn hình, phần mềm Mô tả được
+tạo tự động]
+
+Bước: Chọn Transactional publication để cho phép nhân bản -> Chọn Next
+
+[]
+
+Bước: Mở rộng mục table để xem các bảng có trong database. Tích vào bảng
+muốn nhân bản, ở đây là bảng subject. Tích vào subject -> click next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: click next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Tích chọn “Create a snapshot immediately and keep the snapshot
+availble to initialize subscriptions”. Click next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Chọn Security Settings..
+
+[Ảnh có chứa văn bản, đồ điện tử, ảnh chụp màn hình, phần mềm Mô tả được
+tạo tự động]
+
+Bước: Tích chọn “Run under the SQL Server Agent service account” và
+“Using the following SQL Server login:”. Sau đó nhập tài khoản mật khẩu
+sa (mà nhóm đã thống nhất từ trước):
+
+Login: sa Password:1234567
+
+[Graphical user interface Description automatically generated]
+
+Bước: Chọn Next
+
+[Graphical user interface, application Description automatically
+generated]
+
+Bước: Tích chọn “Create the publication”. Click Next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Đặt tên cho nhân bản muốn tạo ra trong ô Publication Name, ở đây
+là subject. Click “Finish”
+
+[A screenshot of a computer Description automatically generated with
+medium confidence]
+
+Bước: Thông báo tạo nhân bản thành công
+
+[Ảnh có chứa văn bản, ảnh chụp màn hình, phần mềm, Biểu tượng máy tính
+Mô tả được tạo tự động]
+
+Bước: Refresh lại Local Publication để check lại xem đã có subject chưa.
+Ở đây chúng ta đã tạo nhân bản subject thành công[A screenshot of a
+computer Description automatically generated]
+
+2.  Tạo Merge replication
+
+    -   Merge replication cho phép nhiều server làm việc độc lập (online
+        hay ofline) sau đó hợp nhất dữ liệu đã thay đổi lại dựa vào độ
+        ưu tiên, thời điểm chỉnh sửa hoặc do người dùng tự quy định.
+        Subscriber sẽ đồng bộ với publisher khi được kết nối vào mạng và
+        sẽ chuyển giao tất cả các row đã thực hiện thay đổi giữa
+        publisher và subscriber kể từ lần đồng bộ cuối cùng.
+
+    -   Merge replication thường được dùng trong các trường hợp sau:
+
++Nhiều subscriber cập nhật cùng một dữ liệu nhiều lần và muốn phân phối
+những thay đổi đó tới publisher và các subscriber khác
+
++Subscriber có nhu cầu nhận dữ liệu, thay đổi dữ liệu offline, sau đó
+đồng bộ hóa những thay đổi tới publisher và các subscriber khác
+
++Mỗi subscriber yêu cầu một phân vùng dữ liệu khác nhau
+
+Bước: Click chuột phải vào Local Publication. Chọn New Publication
+
+[Graphical user interface, application, PowerPoint Description
+automatically generated]
+
+Bước: chọn next
+
+[]
+
+Bước: Chọn database muốn phân mảnh. Click Next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Phân mảnh data
+
+[A screenshot of a computer program Description automatically generated]
+
+Bước: nhấn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn security setting
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Nhập dữ liệu, nhấn ok
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: chọn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Đặt tên, nhấn ok
+
+[A screenshot of a computer Description automatically generated]
+
+3.  Cấp dữ liệu cho máy trạm
+
+Bước: Chọn dữ liệu muốn cấp và nhấn chuột phải, chọn new subscriptions.
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước Chọn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn add sql sever subscriber
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Nhập sever muốn cấp dữ liệu
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Tạo database mới
+
+[A screenshot of a computer Description automatically generated]
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn kí tự 3 chấm
+
+[A screenshot of a computer screen Description automatically generated]
+
+Bước: Nhập thông tin
+
+[A screenshot of a computer Description automatically generated]
+
+Bước:Chọn chế độ truyền dữ liệu
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn client
+
+[A screenshot of a computer screen Description automatically generated]
+
+Bước: chọn next
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn finish.
+
+[A screenshot of a computer Description automatically generated]
+
+4.  Tạo login.
+
+Bước: kích chuột phải vào logins
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Điền thông tin
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn database và quyền
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Nhấn ok.
+
+5.  Kết nối linkserver
+
+Bước: chọn chuột phải linkserver.
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: điền thông tin
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Điền thông tin
+
+[A screenshot of a computer Description automatically generated]
+
+Bước: Chọn chế độ, nhấn ok
+
+[A screenshot of a computer Description automatically generated]
+
+6.  Thông tin về máy và linkserver của nhóm
+
+[A table with numbers and letters Description automatically generated]
+
+PHẦN 5: PHÂN TÍCH
+
+I, Một số Triggers sử dụng trên máy trạm
+
+Giả sử ta đang muốn update nhân viên có id ở chi nhánh Huế là ‘HNV40’
+
+-- Trigger them sua nhan vien tai may tram
+
+create trigger [dbo].[update_nhanvien]
+
+on [dbo].[nhanvien]
+
+after insert,update
+
+as
+
+declare @id varchar(255)
+
+set @id = (select id_nhanvien from inserted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc cap nhat')
+
+return
+
+end
+
+if (@id like 'HNV%')
+
+begin
+
+print('Cap nhat thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat that bai')
+
+raiserror('Loi id',16,1)
+
+rollback tran
+
+end
+
+go
+
+Lúc trước
+
+[A screenshot of a computer Description automatically generated]
+
+Khi update nhận được thông báo
+
+[A screenshot of a computer Description automatically generated]
+
+Dữ liệu sau khi update
+
+[A screenshot of a computer Description automatically generated]
+
+Nếu update sai thì sẽ nhận thông báo
+
+[A screenshot of a computer Description automatically generated]
+
+Nếu làm sai thì dữ liệu sẽ không được cập nhật
+
+-- Trigger xoa nhan vien tai may tram
+
+CREATE TRIGGER [DBO].[XoaNhanVien]
+
+ON [DBO].[NhanVien]
+
+AFTER DELETE
+
+AS
+
+DECLARE @id varchar(255), @count int
+
+SET @id = (SELECT ID_NhanVien FROM deleted)
+
+If(@id is null)
+
+BEGIN
+
+Print ('Table nay khong co du lieu')
+
+Return
+
+END
+
+SET @count = (SELECT COUNT(*) FROM NhanVien WHERE ID_NhanVien = @id)
+
+IF (@count = 0)
+
+BEGIN
+
+PRINT ('Xoa thong tin thanh cong')
+
+END
+
+ELSE
+
+BEGIN
+
+PRINT ('Xoa thông tin thất bại')
+
+RAISERROR('Xoa thong tin that bai loi id', 16, 1)
+
+ROLLBACK TRAN
+
+END
+
+GO
+
+Lúc trước
+
+[A group of black text Description automatically generated]
+
+Khi xóa nếu ID không tồn tại nó sẽ thông báo lỗi
+
+[A screenshot of a computer Description automatically generated]
+
+Dữ liệu sẽ không bị thay đổi
+
+[A group of black text Description automatically generated]
+
+-- Trigger xoa tru so chinh tu may tram
+
+create trigger dbo.xoa_trusochinh
+
+on dbo.trusochinh
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select id_trusochinh from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from TruSoChinh where ID_TruSoChinh='TS01')
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger them sua phong ban tu may tram
+
+create trigger dbo.update_phongban on dbo.phongban
+
+after insert,update
+
+as
+
+declare @id varchar(255)
+
+set @id = (select id_phongban from inserted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc cap nhat')
+
+return
+
+end
+
+if (@id like 'HPB%')
+
+begin
+
+print('Cap nhat thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat that bai')
+
+end
+
+-- Trigger xoa phong ban tu may tram
+
+create trigger dbo.xoa_phongban on dbo.phongban
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select ID_PhongBan from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from PhongBan)
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger kiem tra update bang luong tu may tram
+
+CREATE TRIGGER [dbo].[update_luong] on [dbo].[luong]
+
+AFTER INSERT,UPDATE
+
+AS
+
+declare @id varchar(255)
+
+set @id = (select id_luong from inserted)
+
+if(@id is null)
+
+begin
+
+print('Bang luong khong bi thay doi')
+
+return
+
+end
+
+if (@id like 'HL%')
+
+begin
+
+print('Cap nhat du lieu thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat thong tin that bai')
+
+raiserror('Loi id khong dung',16,2)
+
+rollback
+
+end
+
+GO
+
+-- Trigger xoa luong tu may tram
+
+create trigger dbo.xoa_luong on dbo.luong
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select ID_Luong from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from Luong)
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger kiem tra update bang du an tu may tram
+
+CREATE TRIGGER [dbo].[update_duan] on [dbo].[duan]
+
+AFTER INSERT,UPDATE
+
+AS
+
+declare @id varchar(255)
+
+set @id = (select ID_DuAn from inserted)
+
+if(@id is null)
+
+begin
+
+print('Khong co ban ghi nao duoc cap nhat')
+
+return
+
+end
+
+if (@id like 'HDA%')
+
+begin
+
+print('Cap nhat du lieu thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat thong tin that bai')
+
+raiserror('Loi id khong dung',16,2)
+
+rollback
+
+end
+
+GO
+
+-- Trigger xoa du an tu may tram
+
+create trigger dbo.xoa_duan on dbo.duan
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select ID_DuAn from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from DuAn)
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger kiem tra update bang chuc vu tu may tram
+
+CREATE TRIGGER [dbo].[update_chucvu] on [dbo].[chucvu]
+
+AFTER INSERT,UPDATE
+
+AS
+
+declare @id varchar(255)
+
+set @id = (select ID_ChucVu from inserted)
+
+if(@id is null)
+
+begin
+
+print('Khong co ban ghi nao duoc cap nhat')
+
+return
+
+end
+
+if (@id like 'HCV%')
+
+begin
+
+print('Cap nhat du lieu thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat thong tin that bai')
+
+raiserror('Loi id khong dung',16,2)
+
+rollback
+
+end
+
+GO
+
+-- Trigger xoa chuc vu tu may tram
+
+create trigger dbo.xoa_duan on dbo.duan
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select ID_DuAn from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from DuAn)
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger kiem tra update chinh sach tu may tram
+
+CREATE TRIGGER [dbo].[update_chinhsach] on [dbo].[chinhsach]
+
+AFTER INSERT,UPDATE
+
+AS
+
+declare @id varchar(255)
+
+set @id = (select ID_ChinhSach from inserted)
+
+if(@id is null)
+
+begin
+
+print('Khong co ban ghi nao duoc cap nhat')
+
+return
+
+end
+
+if (@id like 'CS%')
+
+begin
+
+print('Cap nhat du lieu thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat thong tin that bai')
+
+raiserror('Loi id khong dung',16,2)
+
+rollback
+
+end
+
+GO
+
+-- Trigger xoa chuc vu tu may tram
+
+create trigger dbo.chinh_sach on dbo.chinhsach
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select ID_ChinhSach from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from ChinhSach)
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger kiem tra update chi nhanh tu may tram
+
+CREATE TRIGGER [dbo].[update_chinhanh] on [dbo].[chinhanh]
+
+AFTER INSERT,UPDATE
+
+AS
+
+declare @id varchar(255)
+
+set @id = (select ID_ChiNhanh from inserted)
+
+if(@id is null)
+
+begin
+
+print('Khong co ban ghi nao duoc cap nhat')
+
+return
+
+end
+
+if (@id like 'CN%')
+
+begin
+
+print('Cap nhat du lieu thanh cong')
+
+end
+
+else
+
+begin
+
+print('Cap nhat thong tin that bai')
+
+raiserror('Loi id khong dung',16,2)
+
+rollback
+
+end
+
+GO
+
+-- Trigger xoa chuc vu tu may tram
+
+create trigger dbo.xoa_chinhanh on dbo.chinhanh
+
+after delete
+
+as
+
+declare @id varchar(255),@cnt int
+
+set @id = (select ID_ChiNhanh from deleted)
+
+if (@id is null)
+
+begin
+
+print('Chua co ban ghi nao duoc xoa')
+
+return
+
+end
+
+set @cnt = (select count(*) from ChiNhanh)
+
+if(@cnt = 0)
+
+begin
+
+print('Xoa thanh cong')
+
+end
+
+else
+
+begin
+
+print('Xoa that bai')
+
+end
+
+-- Trigger đảm bảo rằng không có hai nhân viên nào có cùng email
+
+CREATE TRIGGER dbo.ensure_unique_email_nv
+
+ON dbo.NhanVien
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @Email VARCHAR(255)
+
+SELECT @Email = Email FROM inserted
+
+IF EXISTS (SELECT 1 FROM NhanVien WHERE Email = @Email AND ID_NhanVien
+!= (SELECT ID_NhanVien FROM inserted))
+
+BEGIN
+
+RAISERROR('Email đã tồn tại trong hệ thống', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger cập nhật số lượng nhân viên sau khi thêm hoặc xóa nhân viên
+từ một phòng ban
+
+CREATE TRIGGER dbo.update_employee_count_in_department
+
+ON dbo.NhanVien
+
+AFTER INSERT, DELETE
+
+AS
+
+BEGIN
+
+DECLARE @PhongBanID VARCHAR(255)
+
+SELECT @PhongBanID = ID_PhongBan FROM inserted UNION ALL SELECT
+ID_PhongBan FROM deleted
+
+UPDATE PhongBan
+
+SET SoLuongNhanVien = (SELECT COUNT(*) FROM NhanVien WHERE ID_PhongBan =
+@PhongBanID)
+
+WHERE ID_PhongBan = @PhongBanID
+
+END;
+
+GO
+
+-- Trigger kiểm tra ngày bắt đầu dự án để đảm bảo rằng nó không trước
+ngày hiện tại
+
+CREATE TRIGGER dbo.check_project_start_date
+
+ON dbo.DuAn
+
+BEFORE INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @NgayBatDau DATE
+
+SELECT @NgayBatDau = NgayBatDau FROM inserted
+
+IF @NgayBatDau < GETDATE()
+
+BEGIN
+
+RAISERROR('Ngày bắt đầu dự án không thể trước ngày hiện tại', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger kiểm tra mức lương của nhân viên để đảm bảo rằng nó không
+thấp hơn mức tối thiểu cho phép
+
+CREATE TRIGGER dbo.check_minimum_salary
+
+ON dbo.Luong
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @MucLuong INT
+
+SELECT @MucLuong = MucLuong FROM inserted
+
+IF @MucLuong < 32550000 -- Giả sử mức lương tối thiểu là 3,2550,000 VND
+
+BEGIN
+
+RAISERROR('Mức lương không được thấp hơn mức lương tối thiểu cho phép',
+16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này đảm bảo rằng không có hai nhân viên nào có cùng email
+
+CREATE TRIGGER dbo.ensure_unique_email_nv
+
+ON dbo.NhanVien
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @Email VARCHAR(255)
+
+SELECT @Email = Email FROM inserted
+
+IF EXISTS (SELECT 1 FROM NhanVien WHERE Email = @Email AND ID_NhanVien
+!= (SELECT ID_NhanVien FROM inserted))
+
+BEGIN
+
+RAISERROR('Email đã tồn tại trong hệ thống', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger cập nhật số lượng nhân viên sau khi thêm hoặc xóa nhân viên
+từ một phòng ban
+
+CREATE TRIGGER dbo.update_employee_count_in_department
+
+ON dbo.NhanVien
+
+AFTER INSERT, DELETE
+
+AS
+
+BEGIN
+
+DECLARE @PhongBanID VARCHAR(255)
+
+SELECT @PhongBanID = ID_PhongBan FROM inserted UNION ALL SELECT
+ID_PhongBan FROM deleted
+
+UPDATE PhongBan
+
+SET SoLuongNhanVien = (SELECT COUNT(*) FROM NhanVien WHERE ID_PhongBan =
+@PhongBanID)
+
+WHERE ID_PhongBan = @PhongBanID
+
+END;
+
+GO
+
+-- Trigger kiểm tra ngày bắt đầu dự án để đảm bảo rằng nó không trước
+ngày hiện tại
+
+CREATE TRIGGER dbo.check_project_start_date
+
+ON dbo.DuAn
+
+BEFORE INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @NgayBatDau DATE
+
+SELECT @NgayBatDau = NgayBatDau FROM inserted
+
+IF @NgayBatDau < GETDATE()
+
+BEGIN
+
+RAISERROR('Ngày bắt đầu dự án không thể trước ngày hiện tại', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger kiểm tra mức lương của nhân viên để đảm bảo rằng nó không
+thấp hơn mức tối thiểu cho phép
+
+CREATE TRIGGER dbo.check_minimum_salary
+
+ON dbo.Luong
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @MucLuong INT
+
+SELECT @MucLuong = MucLuong FROM inserted
+
+IF @MucLuong < 32550000 -- Giả sử mức lương tối thiểu là 3,2550,000 VND
+
+BEGIN
+
+RAISERROR('Mức lương không được thấp hơn mức lương tối thiểu cho phép',
+16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này kiểm tra số điện thoại của nhân viên khi thêm mới hoặc
+cập nhật để đảm bảo tính duy nhất
+
+CREATE TRIGGER dbo.ensure_unique_phone_nv
+
+ON dbo.NhanVien
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @SoDienThoai VARCHAR(255)
+
+SELECT @SoDienThoai = SoDienThoai FROM inserted
+
+IF EXISTS (SELECT 1 FROM NhanVien WHERE SoDienThoai = @SoDienThoai AND
+ID_NhanVien != (SELECT ID_NhanVien FROM inserted))
+
+BEGIN
+
+RAISERROR('Số điện thoại đã được sử dụng bởi nhân viên khác.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này đảm bảo rằng không có hai chi nhánh nào có cùng email
+
+CREATE TRIGGER dbo.ensure_unique_email_branch
+
+ON dbo.ChiNhanh
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @Email VARCHAR(255)
+
+SELECT @Email = Email FROM inserted
+
+IF EXISTS (SELECT 1 FROM ChiNhanh WHERE Email = @Email AND ID_ChiNhanh
+!= (SELECT ID_ChiNhanh FROM inserted))
+
+BEGIN
+
+RAISERROR('Email đã tồn tại trong các chi nhánh khác', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger cập nhật Email của tất cả phòng ban thuộc chi nhánh khi cập
+nhật thông tin Email của chi nhánh
+
+CREATE TRIGGER dbo.update_department_email_on_branch_update
+
+ON dbo.ChiNhanh
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @ID_ChiNhanh VARCHAR(255), @Email VARCHAR(255)
+
+SELECT @ID_ChiNhanh = ID_ChiNhanh, @Email = Email FROM inserted
+
+UPDATE PhongBan
+
+SET Email = @Email
+
+WHERE ID_ChiNhanh = @ID_ChiNhanh
+
+END;
+
+GO
+
+-- Trigger kiểm tra độ tuổi của nhân viên khi cập nhật thông tin cá nhân
+để đảm bảo tuổi tối thiểu là 18
+
+CREATE TRIGGER dbo.check_age_update
+
+ON dbo.NhanVien
+
+BEFORE UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @NgaySinh DATE, @ID_NhanVien VARCHAR(255)
+
+SELECT @ID_NhanVien = ID_NhanVien, @NgaySinh = NgaySinh FROM inserted
+
+IF (DATEDIFF(year, @NgaySinh, GETDATE()) < 18)
+
+BEGIN
+
+RAISERROR('Nhân viên phải đủ 18 tuổi.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này kiểm tra thời hạn của dự án khi nhập hoặc cập nhật để đảm
+bảo thời hạn không âm
+
+CREATE TRIGGER dbo.check_project_duration
+
+ON dbo.DuAn
+
+BEFORE INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @ThoiHan INT
+
+SELECT @ThoiHan = ThoiHan FROM inserted
+
+IF @ThoiHan <= 0
+
+BEGIN
+
+RAISERROR('Thời hạn dự án phải lớn hơn 0.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này cập nhật tình trạng chính sách dựa trên các thay đổi mô
+tả hoặc tiêu đề của chính sách
+
+CREATE TRIGGER dbo.update_policy_status
+
+ON dbo.ChinhSach
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+IF (UPDATE(MoTa) OR UPDATE(TenChinhSach))
+
+BEGIN
+
+UPDATE ChinhSach
+
+SET TinhTrang = 'Đã cập nhật'
+
+WHERE ID_ChinhSach = (SELECT ID_ChinhSach FROM inserted)
+
+PRINT('Tình trạng chính sách đã được cập nhật')
+
+END
+
+END;
+
+GO
+
+-- Trigger này đảm bảo rằng không có hai nhân viên nào có cùng CCCD (căn
+cước công dân)
+
+CREATE TRIGGER dbo.ensure_unique_cccd_nv
+
+ON dbo.NhanVien
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @CCCD VARCHAR(255)
+
+SELECT @CCCD = CCCD FROM inserted
+
+IF EXISTS (SELECT 1 FROM NhanVien WHERE CCCD = @CCCD AND ID_NhanVien !=
+(SELECT ID_NhanVien FROM inserted))
+
+BEGIN
+
+RAISERROR('CCCD đã tồn tại trong hệ thống.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger cập nhật địa chỉ nhân viên khi địa chỉ phòng ban thay đổi để
+đảm bảo tính nhất quán
+
+CREATE TRIGGER dbo.update_employee_address_on_department_change
+
+ON dbo.PhongBan
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+IF UPDATE(DiaChi)
+
+BEGIN
+
+DECLARE @ID_PhongBan VARCHAR(255), @DiaChi VARCHAR(255)
+
+SELECT @ID_PhongBan = ID_PhongBan, @DiaChi = DiaChi FROM inserted
+
+UPDATE NhanVien
+
+SET DiaChi = @DiaChi
+
+WHERE ID_PhongBan = @ID_PhongBan
+
+PRINT('Địa chỉ nhân viên đã được cập nhật theo phòng ban mới')
+
+END
+
+END;
+
+GO
+
+-- Trigger này cập nhật số điện thoại của các chi nhánh khi số điện
+thoại trụ sở chính được thay đổi
+
+CREATE TRIGGER dbo.update_branch_phone_on_headquarter_change
+
+ON dbo.TruSoChinh
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+IF UPDATE(SoDienThoai)
+
+BEGIN
+
+DECLARE @ID_TruSoChinh VARCHAR(255), @SoDienThoai VARCHAR(255)
+
+SELECT @ID_TruSoChinh = ID_TruSoChinh, @SoDienThoai = SoDienThoai FROM
+inserted
+
+UPDATE ChiNhanh
+
+SET SoDienThoai = @SoDienThoai
+
+WHERE ID_TruSoChinh = @ID_TruSoChinh
+
+PRINT('Số điện thoại của chi nhánh đã được cập nhật theo trụ sở chính
+mới')
+
+END
+
+END;
+
+GO
+
+-- Trigger này đảm bảo rằng mức lương của nhân viên không được giảm so
+với mức lương hiện tại khi cập nhật
+
+CREATE TRIGGER dbo.prevent_salary_reduction
+
+ON dbo.Luong
+
+BEFORE UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @ID_Luong VARCHAR(255), @MucLuongCu INT, @MucLuongMoi INT
+
+SELECT @ID_Luong = ID_Luong, @MucLuongCu = MucLuong FROM deleted
+
+SELECT @MucLuongMoi = MucLuong FROM inserted
+
+IF @MucLuongMoi < @MucLuongCu
+
+BEGIN
+
+RAISERROR('Không được phép giảm mức lương của nhân viên.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này cập nhật số điện thoại nhân viên khi số điện thoại tại
+chức vụ được thay đổi
+
+CREATE TRIGGER dbo.update_employee_phone_on_position_change
+
+ON dbo.ChucVu
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+IF UPDATE(SoDienThoai)
+
+BEGIN
+
+DECLARE @ID_ChucVu VARCHAR(255), @SoDienThoai VARCHAR(255)
+
+SELECT @ID_ChucVu = ID_ChucVu, @SoDienThoai = SoDienThoai FROM inserted
+
+UPDATE NhanVien
+
+SET SoDienThoai = @SoDienThoai
+
+WHERE ID_ChucVu = @ID_ChucVu
+
+PRINT('Số điện thoại nhân viên đã được cập nhật theo chức vụ mới')
+
+END
+
+END;
+
+GO
+
+-- Trigger này đảm bảo rằng không có hai chi nhánh nào có cùng email khi
+thêm mới hoặc cập nhật
+
+CREATE TRIGGER dbo.ensure_unique_branch_email
+
+ON dbo.ChiNhanh
+
+AFTER INSERT, UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @Email VARCHAR(255)
+
+SELECT @Email = Email FROM inserted
+
+IF EXISTS (SELECT 1 FROM ChiNhanh WHERE Email = @Email AND ID_ChiNhanh
+!= (SELECT ID_ChiNhanh FROM inserted))
+
+BEGIN
+
+RAISERROR('Email đã tồn tại trong các chi nhánh khác', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger cập nhật tên phòng ban trong các dự án liên quan khi tên
+phòng ban được thay đổi
+
+CREATE TRIGGER dbo.update_project_department_name
+
+ON dbo.PhongBan
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+IF UPDATE(TenPhongBan)
+
+BEGIN
+
+DECLARE @ID_PhongBan VARCHAR(255), @TenPhongBan VARCHAR(255)
+
+SELECT @ID_PhongBan = ID_PhongBan, @TenPhongBan = TenPhongBan FROM
+inserted
+
+UPDATE DuAn
+
+SET TenPhongBan = @TenPhongBan
+
+WHERE ID_PhongBan = @ID_PhongBan
+
+PRINT('Tên phòng ban trong các dự án đã được cập nhật')
+
+END
+
+END;
+
+GO
+
+-- Trigger này kiểm tra ngày sinh của nhân viên khi thêm mới để đảm bảo
+họ đủ tuổi lao động
+
+CREATE TRIGGER dbo.check_employee_birthdate
+
+ON dbo.NhanVien
+
+BEFORE INSERT
+
+AS
+
+BEGIN
+
+DECLARE @NgaySinh DATE
+
+SELECT @NgaySinh = NgaySinh FROM inserted
+
+IF (DATEDIFF(year, @NgaySinh, GETDATE()) < 18)
+
+BEGIN
+
+RAISERROR('Nhân viên phải đủ 18 tuổi để đăng ký.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+-- Trigger này đảm bảo rằng không có hai nhân viên nào có cùng số CCCD
+khi cập nhật thông tin nhân viên
+
+CREATE TRIGGER dbo.ensure_unique_cccd_on_update
+
+ON dbo.NhanVien
+
+AFTER UPDATE
+
+AS
+
+BEGIN
+
+DECLARE @CCCD VARCHAR(255)
+
+SELECT @CCCD = CCCD FROM inserted
+
+IF EXISTS (SELECT 1 FROM NhanVien WHERE CCCD = @CCCD AND ID_NhanVien !=
+(SELECT ID_NhanVien FROM inserted))
+
+BEGIN
+
+RAISERROR('Số CCCD đã tồn tại, vui lòng kiểm tra lại.', 16, 1)
+
+ROLLBACK TRANSACTION
+
+END
+
+END;
+
+GO
+
+PHẦN 6: Một số procedure
+
+I, Một số Procedure
+
+-- Tinh so nhan vien cua moi phong ban
+
+create procedure dbo.tongnhanvien
+
+as
+
+begin
+
+select pb.ID_PhongBan,pb.TenPhongBan,count(*) as SoNhanVien
+
+from PhongBan as pb
+
+join NhanVien as nv
+
+on pb.ID_PhongBan = nv.ID_PhongBan
+
+group by pb.ID_PhongBan,pb.TenPhongBan
+
+order by SoNhanVien desc
+
+end
+
+execute tongnhanvien
+
+[]
+
+-- Tong luong moi nhan vien
+
+create procedure dbo.tongluong
+
+as
+
+begin
+
+select nv.ID_NhanVien,nv.HoTen,sum(mucluong) as tongluong
+
+from NhanVien as nv
+
+join Luong as l
+
+on nv.ID_NhanVien = l.ID_NhanVien
+
+group by nv.ID_NhanVien,nv.HoTen
+
+order by tongluong desc
+
+end
+
+execute tongluong
+
+[]
+
+-- Tinh tong so luong cua moi phong ban
+
+create procedure dbo.luongphongban
+
+as
+
+begin
+
+select pb.ID_PhongBan,pb.TenPhongBan,sum(mucluong) as tongluong
+
+from PhongBan as pb
+
+join NhanVien as nv
+
+on pb.ID_PhongBan = nv.ID_PhongBan
+
+join Luong as l
+
+on nv.ID_NhanVien = l.ID_NhanVien
+
+group by pb.ID_PhongBan,pb.TenPhongBan
+
+order by tongluong desc
+
+end
+
+execute luongphongban
+
+[]
+
+-- tong so nhan vien cua mot phong ban
+
+create procedure dbo.nhanvienphongban
+
+as
+
+begin
+
+select pb.ID_PhongBan,pb.TenPhongBan,count(*) as sonhanvien
+
+from PhongBan as pb
+
+join NhanVien as nv
+
+on pb.ID_PhongBan = nv.ID_PhongBan
+
+group by pb.ID_PhongBan,pb.TenPhongBan
+
+order by sonhanvien desc
+
+end
+
+execute nhanvienphongban
+
+[]
+
+-- tong so phong ban cua chi nhanh 1
+
+create procedure dbo.sophongban
+
+as
+
+begin
+
+select cn.ID_ChiNhanh,cn.TenChiNhanh,count(*) as sophongban
+
+from ChiNhanh as cn
+
+join PhongBan as pb
+
+on cn.ID_ChiNhanh = pb.ID_ChiNhanh
+
+group by cn.ID_ChiNhanh,cn.TenChiNhanh
+
+end
+
+execute nhanvienphongban
+
+[]
+
+PHẦN 7: Một số Transaction
+
+-- Tinh tong luong cua mot nhan vien
+
+begin try
+
+begin tran
+
+select nv.id_nhanvien,nv.hoten,sum(mucluong) as Tongluong
+
+from trusochinh.trusochinh.dbo.nhanvien as nv
+
+inner join trusochinh.trusochinh.dbo.luong as l
+
+on nv.id_nhanvien = l.id_nhanvien
+
+group by nv.id_nhanvien,nv.hoten
+
+order by sum(mucluong) desc
+
+commit
+
+end try
+
+begin catch
+
+print('Error')
+
+rollback
+
+end catch
+
+[]
+
+-- Khởi tạo Transaction để quản lý dữ liệu nhân viên và các đơn vị liên
+quan
+
+BEGIN TRANSACTION;
+
+-- Thêm dữ liệu cho TruSoChinh
+
+INSERT INTO TruSoChinh (ID_TruSoChinh, TenTruSoChinh, DiaChi, Email,
+SoDienThoai) VALUES
+
+('TS01', 'Trụ Sở Chính Hà Nội', '123 Đường Lê Lợi, Hà Nội',
+'info@trusochinh.vn', '0123456789');
+
+-- Thêm dữ liệu cho ChiNhanh
+
+INSERT INTO ChiNhanh (ID_ChiNhanh, ID_TruSoChinh, TenChiNhanh, DiaChi,
+Email, SoDienThoai) VALUES
+
+('CN01', 'TS01', 'Chi Nhánh TP HCM', '456 Đường Lý Thường Kiệt, TP HCM',
+'info@chinhanhhcm.vn', '0987654321');
+
+-- Thêm dữ liệu cho PhongBan
+
+INSERT INTO PhongBan (ID_PhongBan, ID_ChiNhanh, TenPhongBan, Email,
+SoDienThoai) VALUES
+
+('PB01', 'CN01', 'Phòng Marketing', 'marketing@chinhanhhcm.vn',
+'0234567890');
+
+-- Thêm dữ liệu cho DuAn
+
+INSERT INTO DuAn (ID_DuAn, ID_PhongBan, TenDuAn, NgayBatDau, ThoiHan,
+MoTa) VALUES
+
+('DA01', 'PB01', 'Dự Án Xây Dựng Thương Hiệu', '2024-01-01', 365, 'Dự án
+nhằm xây dựng và phát triển thương hiệu mới');
+
+-- Thêm dữ liệu cho ChucVu
+
+INSERT INTO ChucVu (ID_ChucVu, TenChucVu, BacLuong) VALUES
+
+('CV01', 'Giám đốc', 10);
+
+-- Thêm dữ liệu cho NhanVien
+
+INSERT INTO NhanVien (ID_NhanVien, ID_DuAn, ID_ChucVu, HoTen, NgaySinh,
+GioiTinh, DanToc, CCCD, SoDienThoai, Email, DiaChi) VALUES
+
+('NV01', 'DA01', 'CV01', 'Nguyễn Văn A', '1985-05-20', 'Nam', 'Kinh',
+'123456789012', '0123456789', 'nva@chinhanhhcm.vn', '789 Đường Trần Hưng
+Đạo, TP HCM');
+
+-- Thêm dữ liệu cho Luong
+
+INSERT INTO Luong (ID_Luong, ID_NhanVien, MucLuong) VALUES
+
+('L01', 'NV01', 20000000);
+
+-- Kiểm tra và kết thúc Transaction
+
+IF @@ERROR = 0
+
+COMMIT TRANSACTION;
+
+ELSE
+
+ROLLBACK TRANSACTION;
+
+-- Tiếp tục Transaction để quản lý thêm dữ liệu
+
+BEGIN TRANSACTION;
+
+-- Thêm dữ liệu cho trụ sở khác
+
+INSERT INTO TruSoChinh (ID_TruSoChinh, TenTruSoChinh, DiaChi, Email,
+SoDienThoai) VALUES
+
+('TS02', 'Trụ Sở Đà Nẵng', '321 Đường Phan Châu Trinh, Đà Nẵng',
+'info@trusodanang.vn', '0236987456');
+
+-- Thêm chi nhánh mới liên kết với trụ sở mới
+
+INSERT INTO ChiNhanh (ID_ChiNhanh, ID_TruSoChinh, TenChiNhanh, DiaChi,
+Email, SoDienThoai) VALUES
+
+('CN02', 'TS02', 'Chi Nhánh Nha Trang', '789 Đường Nguyễn Thị Minh Khai,
+Nha Trang', 'info@chinhanhnt.vn', '0357841236');
+
+-- Thêm phòng ban mới vào chi nhánh mới
+
+INSERT INTO PhongBan (ID_PhongBan, ID_ChiNhanh, TenPhongBan, Email,
+SoDienThoai) VALUES
+
+('PB02', 'CN02', 'Phòng Nhân Sự', 'nhansu@chinhanhnt.vn', '0378912468');
+
+-- Thêm dự án mới vào phòng ban mới
+
+INSERT INTO DuAn (ID_DuAn, ID_PhongBan, TenDuAn, NgayBatDau, ThoiHan,
+MoTa) VALUES
+
+('DA02', 'PB02', 'Dự Án Đào Tạo Nhân Viên', '2024-04-01', 180, 'Dự án
+nhằm nâng cao kỹ năng cho nhân viên mới và hiện tại');
+
+-- Thêm chức vụ mới
+
+INSERT INTO ChucVu (ID_ChucVu, TenChucVu, BacLuong) VALUES
+
+('CV02', 'Nhân viên', 5);
+
+-- Thêm nhân viên mới vào dự án mới và chức vụ mới
+
+INSERT INTO NhanVien (ID_NhanVien, ID_DuAn, ID_ChucVu, HoTen, NgaySinh,
+GioiTinh, DanToc, CCCD, SoDienThoai, Email, DiaChi) VALUES
+
+('NV02', 'DA02', 'CV02', 'Trần Thị B', '1990-10-15', 'Nữ', 'Kinh',
+'987654321098', '0357124689', 'ttb@chinhanhnt.vn', '654 Đường Lê Lợi,
+Nha Trang');
+
+-- Thêm thông tin lương cho nhân viên mới
+
+INSERT INTO Luong (ID_Luong, ID_NhanVien, MucLuong) VALUES
+
+('L02', 'NV02', 15000000);
+
+-- Kiểm tra lỗi và kết thúc giao dịch
+
+IF @@ERROR = 0
+
+COMMIT TRANSACTION;
+
+ELSE
+
+ROLLBACK TRANSACTION;
+
+-- dem so nhan vien trong mot phong ban cua chi nhanh cn01
+
+begin try
+
+begin tran
+
+select pb.id_phongban,pb.tenphongban,count(*) as soluong
+
+from trusochinh.trusochinh.dbo.phongban as pb
+
+join trusochinh.trusochinh.dbo.nhanvien as nv
+
+on pb.id_phongban = nv.id_phongban
+
+where pb.id_chinhanh = 'CN01'
+
+group by pb.id_phongban,pb.tenphongban
+
+order by soluong desc
+
+end try
+
+begin catch
+
+rollback
+
+end catch
+
+[]
+
+-- tim nhan vien chi lam cho 1 phong ban
+
+begin try
+
+select distinct nv.hoten
+
+from trusochinh.trusochinh.dbo.nhanvien as nv
+
+where nv.hoten not in
+
+(select nv.hoten
+
+from trusochinh.trusochinh.dbo.nhanvien as nv
+
+join trusochinh.trusochinh.dbo.phongban as pb
+
+on nv.id_phongban = pb.id_phongban
+
+group by nv.hoten
+
+having count(*) >= 2
+
+)
+
+commit
+
+end try
+
+begin catch
+
+rollback
+
+end catch
+
+[]
