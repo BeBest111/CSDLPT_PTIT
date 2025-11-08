@@ -1,7 +1,7 @@
 -- ============================================
 -- FILE: Test_Triggers_Procedures.sql
 -- MÔ TẢ: Script test các triggers và procedures
--- TÁC GIẢ: Nhóm 5 - CSDLPT
+-- TÁC GIẢ: Nguyễn Minh Tiến - Nhóm 5 - CSDLPT
 -- NGÀY: 06/11/2025
 -- ============================================
 

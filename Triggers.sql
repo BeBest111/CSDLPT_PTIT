@@ -1,7 +1,7 @@
 -- ============================================
 -- FILE: Triggers.sql
 -- MÔ TẢ: Các triggers để bảo vệ và quản lý dữ liệu
--- TÁC GIẢ: Nhóm 5 - CSDLPT
+-- TÁC GIẢ: Nguyễn Minh Tiến - Nhóm 5 - CSDLPT
 -- NGÀY: 06/11/2025
 -- ============================================
 
