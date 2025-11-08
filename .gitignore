@@ -1,0 +1,36 @@
+# Archive (old files, not needed in repo)
+.archive/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+
+# Database backup files
+*.bak
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Screenshots (add later if needed)
+screenshots/
+
+# Temporary files
+temp/
+tmp/
