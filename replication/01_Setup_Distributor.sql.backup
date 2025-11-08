@@ -51,9 +51,9 @@ IF NOT EXISTS (SELECT * FROM sys.servers WHERE is_distributor = 1)
 BEGIN
     PRINT 'Đang cấu hình Distributor...';
     
-    -- Thêm Distributor (dùng @@SERVERNAME cho local)
+    -- Thêm Distributor
     EXEC sp_adddistributor 
-        @distributor = @@SERVERNAME,
+        @distributor = N'100.64.0.1',  -- ⚠️ SỬA IP NÀY!
         @password = N'Tt12345@';
     
     PRINT '✅ Đã cấu hình Distributor';
@@ -119,14 +119,14 @@ GO
 IF NOT EXISTS (
     SELECT * 
     FROM sys.servers 
-    WHERE name = @@SERVERNAME
+    WHERE name = '100.64.0.1'  -- ⚠️ SỬA IP NÀY!
       AND is_publisher = 1
 )
 BEGIN
     PRINT 'Đang đăng ký Publisher...';
     
     EXEC sp_adddistpublisher 
-        @publisher = @@SERVERNAME,
+        @publisher = N'100.64.0.1',  -- ⚠️ SỬA IP NÀY!
         @distribution_db = N'distribution',
         @security_mode = 0,
         @login = N'sa',
