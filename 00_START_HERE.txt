@@ -1,0 +1,63 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║   DỰ ÁN CSDLPT - QUẢN LÝ NHÂN SỰ ĐA CHI NHÁNH               ║
+║   Nhóm 5 - PTIT                                              ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📌 BẠN LÀ AI?
+
+  👤 TIẾN (Leader - Ubuntu)?
+     → Đọc file: docs/guides/BAT_DAU_NGAY.md
+     → Sau đó: README.md
+
+  👥 THÀNH VIÊN KHÁC (Windows)?
+     → Đọc file: docs/guides/PHAN_CONG_NHOM.md
+     → Chờ hướng dẫn từ Tiến trong group
+
+═══════════════════════════════════════════════════════════════
+
+📂 CẤU TRÚC DỰ ÁN (ĐÃ SẮP XẾP)
+
+CSDLPT/
+├── 📄 README.md                     ← Đọc file này trước
+├── 📄 00_START_HERE.txt            ← File bạn đang đọc
+│
+├── 📁 database/                     ← Database scripts
+│   ├── schemas/                     ← 7 file SQL (schema, data, triggers...)
+│   └── tests/                       ← Test scripts
+│
+├── 📁 replication/                  ← 5 file SQL (replication)
+│
+├── 📁 scripts/                      ← Python scripts
+│   └── python/generate_data.py
+│
+└── 📁 docs/                         ← Tài liệu
+    ├── guides/                      ← 7 file hướng dẫn
+    │   ├── BAT_DAU_NGAY.md         ← ⭐ Đọc ngay!
+    │   ├── PHAN_CONG_NHOM.md
+    │   ├── HUONG_DAN_VPN.md
+    │   ├── HUONG_DAN_REPLICATION.md
+    │   └── ...
+    └── reports/                     ← Báo cáo, tài liệu bảo vệ
+
+═══════════════════════════════════════════════════════════════
+
+⚡ HÀNH ĐỘNG NGAY BÂY GIỜ
+
+  1️⃣  Đọc: docs/guides/BAT_DAU_NGAY.md
+  2️⃣  Đọc: README.md
+  3️⃣  Làm theo hướng dẫn từng bước
+
+═══════════════════════════════════════════════════════════════
+
+📊 TIẾN ĐỘ: 70% ✅
+
+  ✅ Database (70%)
+  ⏳ VPN + Replication (30%)
+
+═══════════════════════════════════════════════════════════════
+
+🚀 LET'S GO!
+
+═══════════════════════════════════════════════════════════════
