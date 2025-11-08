@@ -38,25 +38,25 @@ Bây giờ cần mọi người làm **5 việc** sau (deadline: **tối nay 21h
 
 ---
 
-## 📌 VIỆC 3: Cài Tailscale VPN ⚠️ QUAN TRỌNG
+### VIỆC 3: Cài Tailscale VPN (5 phút) 🌐
 
-**Link:** https://tailscale.com/download/windows
+**Download & Install:**
+1. Vào: https://tailscale.com/download/windows
+2. Download file `.exe` → Chạy installer
+3. **QUAN TRỌNG:** Đăng nhập bằng tài khoản **BeBest111@gmail.com**
+   - Không dùng tài khoản riêng của bạn!
+   - Tất cả phải cùng 1 tài khoản mới kết nối được với nhau
+4. **SAU KHI ĐĂNG NHẬP:**
+   - Sẽ có màn hình survey → **BỎ QUA** (click Next/Skip)
+   - Không cần điền form survey
+   - Chỉ cần đăng nhập thành công là được
 
-**Các bước:**
-1. Download Tailscale for Windows
-2. Chạy installer → Install
-3. Sau khi cài xong, mở Tailscale (icon ở System Tray)
-4. Click "Log in"
-5. **⚠️ QUAN TRỌNG:** Đăng nhập bằng tài khoản:
-   - Email: **BeBest111@gmail.com** (hoặc tài khoản GitHub: BeBest111)
-   - (Mình sẽ gửi password riêng)
-6. Sau khi đăng nhập, mở Command Prompt:
-   ```
-   tailscale status
-   ```
-7. Chụp screenshot và gửi cho mình IP VPN (dạng 100.x.x.x)
-
----
+**Verify:**
+```cmd
+tailscale status
+```
+- Phải thấy IP dạng `100.x.x.x`
+- Copy IP này gửi vào group chat---
 
 ## 📌 VIỆC 4: Mở Port 1433 (Windows Firewall)
 
