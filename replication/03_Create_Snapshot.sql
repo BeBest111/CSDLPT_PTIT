@@ -12,7 +12,7 @@
  * ============================================
  */
 
-USE QuanLyNhanSu;
+USE QuanLyNhanSu_TruSo;
 GO
 
 PRINT '==============================================';
@@ -37,14 +37,14 @@ GO
 IF NOT EXISTS (
     SELECT * 
     FROM syspublications 
-    WHERE name = 'Pub_ChinhSach' 
+    WHERE name = 'Pub_ChinhSach_ChucVu' 
       AND snapshot_jobid IS NOT NULL
 )
 BEGIN
     PRINT 'Đang tạo Snapshot Agent job...';
     
     EXEC sp_addpublication_snapshot 
-        @publication = N'Pub_ChinhSach',
+        @publication = N'Pub_ChinhSach_ChucVu',
         @frequency_type = 1,  -- One time (có thể đổi thành 4 = Daily nếu muốn chạy định kỳ)
         @frequency_interval = 0,
         @frequency_relative_interval = 0,
@@ -80,7 +80,7 @@ PRINT '(Quá trình này mất 30-60 giây)';
 GO
 
 EXEC sp_startpublication_snapshot 
-    @publication = N'Pub_ChinhSach';
+    @publication = N'Pub_ChinhSach_ChucVu';
 GO
 
 -- Đợi 30 giây
@@ -103,7 +103,7 @@ SELECT
         ELSE 'Chưa sẵn sàng ⏳'
     END AS SnapshotStatus
 FROM syspublications
-WHERE name = 'Pub_ChinhSach';
+WHERE name = 'Pub_ChinhSach_ChucVu';
 GO
 
 -- Kiểm tra Snapshot Agent job
@@ -117,7 +117,7 @@ SELECT
     activity.run_requested_date AS LastRun
 FROM msdb.dbo.sysjobs job
 LEFT JOIN msdb.dbo.sysjobactivity activity ON job.job_id = activity.job_id
-WHERE job.name LIKE '%Pub_ChinhSach%Snapshot%'
+WHERE job.name LIKE '%Pub_ChinhSach_ChucVu%Snapshot%'
 ORDER BY activity.run_requested_date DESC;
 GO
 
@@ -143,8 +143,8 @@ PRINT '==============================================';
 PRINT '';
 PRINT 'BƯỚC TIẾP THEO:';
 PRINT '1. Kiểm tra snapshot_ready = 1 (Sẵn sàng)';
-PRINT '2. Nếu ready, chạy 04_Create_Subscriptions.sql';
+PRINT '2. Nếu ready, chạy Subscriber_Setup.sql trên mỗi chi nhánh';
 PRINT '3. Nếu chưa ready, đợi thêm 30 giây rồi chạy lại:';
-PRINT '   SELECT snapshot_ready FROM syspublications WHERE name = ''Pub_ChinhSach'';';
+PRINT '   SELECT snapshot_ready FROM syspublications WHERE name = ''Pub_ChinhSach_ChucVu'';';
 PRINT '==============================================';
 GO

@@ -2,17 +2,17 @@
  * ============================================
  * CREATE PUBLICATION SCRIPT
  * ============================================
- * Mục đích: Tạo Publication để nhân bản bảng ChinhSach
+ * Mục đích: Tạo Publication để nhân bản bảng ChinhSach và ChucVu
  * Chạy trên: SQL Server 2022 (Ubuntu - máy Tiến)
  * Người chạy: Tiến
  * 
  * YÊU CẦU:
  * - Đã chạy 01_Setup_Distributor.sql thành công
- * - Database QuanLyNhanSu đã có dữ liệu
+ * - Database QuanLyNhanSu_TruSo đã có dữ liệu
  * ============================================
  */
 
-USE QuanLyNhanSu;
+USE QuanLyNhanSu_TruSo;
 GO
 
 PRINT '==============================================';
@@ -21,16 +21,16 @@ PRINT '==============================================';
 GO
 
 -- Kiểm tra database đã enable replication chưa
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'QuanLyNhanSu' AND is_published = 1)
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'QuanLyNhanSu_TruSo' AND is_published = 1)
 BEGIN
     PRINT 'Đang enable replication...';
     
     EXEC sp_replicationdboption 
-        @dbname = N'QuanLyNhanSu',
+        @dbname = N'QuanLyNhanSu_TruSo',
         @optname = N'publish',
         @value = N'true';
     
-    PRINT '✅ Đã enable replication cho database QuanLyNhanSu';
+    PRINT '✅ Đã enable replication cho database QuanLyNhanSu_TruSo';
 END
 ELSE
 BEGIN
@@ -45,13 +45,13 @@ PRINT '==============================================';
 GO
 
 -- Kiểm tra Publication đã tồn tại chưa
-IF NOT EXISTS (SELECT * FROM syspublications WHERE name = 'Pub_ChinhSach')
+IF NOT EXISTS (SELECT * FROM syspublications WHERE name = 'Pub_ChinhSach_ChucVu')
 BEGIN
-    PRINT 'Đang tạo Publication Pub_ChinhSach...';
+    PRINT 'Đang tạo Publication Pub_ChinhSach_ChucVu...';
     
     EXEC sp_addpublication 
-        @publication = N'Pub_ChinhSach',
-        @description = N'Nhân bản bảng ChinhSach đến các chi nhánh',
+        @publication = N'Pub_ChinhSach_ChucVu',
+        @description = N'Nhân bản bảng ChinhSach và ChucVu đến các chi nhánh',
         @sync_method = N'concurrent',  -- Không lock bảng khi snapshot
         @retention = 0,
         @allow_push = N'true',  -- Cho phép push subscription
@@ -76,11 +76,11 @@ BEGIN
         @enabled_for_p2p = N'false',
         @enabled_for_het_sub = N'false';
     
-    PRINT '✅ Đã tạo Publication Pub_ChinhSach';
+    PRINT '✅ Đã tạo Publication Pub_ChinhSach_ChucVu';
 END
 ELSE
 BEGIN
-    PRINT '⚠️ Publication Pub_ChinhSach đã tồn tại';
+    PRINT '⚠️ Publication Pub_ChinhSach_ChucVu đã tồn tại';
 END
 GO
 
@@ -94,14 +94,14 @@ GO
 IF NOT EXISTS (
     SELECT * 
     FROM sysarticles 
-    WHERE publication_id = (SELECT pubid FROM syspublications WHERE name = 'Pub_ChinhSach')
+    WHERE publication_id = (SELECT pubid FROM syspublications WHERE name = 'Pub_ChinhSach_ChucVu')
       AND name = 'ChinhSach'
 )
 BEGIN
     PRINT 'Đang thêm bảng ChinhSach...';
     
     EXEC sp_addarticle 
-        @publication = N'Pub_ChinhSach',
+        @publication = N'Pub_ChinhSach_ChucVu',
         @article = N'ChinhSach',
         @source_owner = N'dbo',
         @source_object = N'ChinhSach',
@@ -129,7 +129,50 @@ GO
 
 PRINT '';
 PRINT '==============================================';
-PRINT 'BƯỚC 4: Kiểm tra Publication';
+PRINT 'BƯỚC 4: Thêm bảng ChucVu vào Publication';
+PRINT '==============================================';
+GO
+
+-- Kiểm tra article đã tồn tại chưa
+IF NOT EXISTS (
+    SELECT * 
+    FROM sysarticles 
+    WHERE publication_id = (SELECT pubid FROM syspublications WHERE name = 'Pub_ChinhSach_ChucVu')
+      AND name = 'ChucVu'
+)
+BEGIN
+    PRINT 'Đang thêm bảng ChucVu...';
+    
+    EXEC sp_addarticle 
+        @publication = N'Pub_ChinhSach_ChucVu',
+        @article = N'ChucVu',
+        @source_owner = N'dbo',
+        @source_object = N'ChucVu',
+        @type = N'logbased',
+        @description = N'Bảng Chức vụ',
+        @creation_script = NULL,
+        @pre_creation_cmd = N'drop',  -- Xóa bảng cũ trước khi tạo mới
+        @schema_option = 0x000000000803509F,
+        @identityrangemanagementoption = N'manual',
+        @destination_table = N'ChucVu',
+        @destination_owner = N'dbo',
+        @status = 24,
+        @vertical_partition = N'false',
+        @ins_cmd = N'CALL [sp_MSins_dboChucVu]',
+        @del_cmd = N'CALL [sp_MSdel_dboChucVu]',
+        @upd_cmd = N'SCALL [sp_MSupd_dboChucVu]';
+    
+    PRINT '✅ Đã thêm bảng ChucVu vào Publication';
+END
+ELSE
+BEGIN
+    PRINT '⚠️ Bảng ChucVu đã được thêm vào Publication rồi';
+END
+GO
+
+PRINT '';
+PRINT '==============================================';
+PRINT 'BƯỚC 5: Kiểm tra Publication';
 PRINT '==============================================';
 GO
 
@@ -141,7 +184,7 @@ SELECT
     repl_freq,
     allow_push
 FROM syspublications
-WHERE name = 'Pub_ChinhSach';
+WHERE name = 'Pub_ChinhSach_ChucVu';
 GO
 
 -- Xem các bảng trong Publication
@@ -151,7 +194,7 @@ SELECT
     a.type_desc AS ReplicationType
 FROM sysarticles a
 INNER JOIN syspublications p ON a.publication_id = p.pubid
-WHERE p.name = 'Pub_ChinhSach';
+WHERE p.name = 'Pub_ChinhSach_ChucVu';
 GO
 
 PRINT '';
