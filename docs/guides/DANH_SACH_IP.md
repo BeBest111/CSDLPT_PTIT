@@ -8,9 +8,9 @@
 
 | Máy | Họ tên | Vai trò | IP VPN | Trạng thái | Ghi chú |
 |-----|--------|---------|--------|-----------|---------|
-| **1** | **Nguyễn Minh Tiến** | **PUBLISHER** (Trụ sở HN) | **100.74.240.106** | ✅ **Online** | Ubuntu 22.04, SQL Server 2022 |
-| 2 | (Tên bạn 2) | SUBSCRIBER (CN01 Huế) | (Đợi bạn gửi) | ⏳ Chưa setup | Windows, SQL Server 2019 |
-| 3 | (Tên bạn 3) | SUBSCRIBER (CN02 Nam Định) | (Đợi bạn gửi) | ⏳ Chưa setup | Windows, SQL Server 2019 |
+| **1** | **Nguyễn Minh Tiến** | **PUBLISHER** (Trụ sở HN) | **100.71.73.74** | ✅ **Online** | Ubuntu 22.04, SQL Server 2022 |
+| 2 | desktop-171avqp | SUBSCRIBER (CN01 Huế) | **100.74.133.70** | ✅ **Online** | Windows, SQL Server (checking...) |
+| 3 | msi | SUBSCRIBER (CN02 Nam Định) | **100.100.210.39** | ✅ **Online** | Windows, SQL Server (checking...) |
 | 4 | (Tên bạn 4) | SUBSCRIBER (CN03 Vinh) | (Đợi bạn gửi) | ⏳ Chưa setup | Windows, SQL Server 2019 |
 | 5 | (Tên bạn 5) | SUBSCRIBER (CN04 Nha Trang) | (Đợi bạn gửi) | ⏳ Chưa setup | Windows, SQL Server 2019 |
 | 6 | (Tên bạn 6) | SUBSCRIBER (CN05 Thái Bình) | (Đợi bạn gửi) | ⏳ Chưa setup | Windows, SQL Server 2019 |
@@ -21,11 +21,12 @@
 
 ### Máy Tiến (Publisher):
 - [x] Cài Tailscale ✅
-- [x] IP VPN: **100.74.240.106** ✅
+- [x] IP VPN: **100.71.73.74** ✅
 - [x] SQL Server running ✅
 - [x] Port 1433 mở ✅
 - [x] Database QuanLyNhanSu có 7 chi nhánh, 280 nhân viên ✅
-- [ ] Đợi 5 bạn setup xong
+- [x] **3/6 máy đã online!** ✅
+- [ ] Đợi 3 bạn còn lại setup
 
 ### 5 bạn (Subscribers):
 - [ ] Cài SQL Server 2019 Developer
@@ -48,7 +49,7 @@
 
 ### Bước 2: Test kết nối
 Mở SSMS:
-- Server name: **100.74.240.106**
+- Server name: **100.71.73.74**
 - Authentication: SQL Server Authentication
 - Login: **sa**
 - Password: **Tt12345@**
@@ -69,11 +70,11 @@ Mỗi người chụp và gửi vào group:
 
 ## 🚨 TROUBLESHOOTING
 
-### Lỗi: "Cannot connect to 100.74.240.106"
+### Lỗi: "Cannot connect to 100.71.73.74"
 **Giải pháp:**
 1. Kiểm tra Tailscale đang chạy (cả 2 máy)
-2. Ping test: `ping 100.74.240.106`
-3. Test port: `Test-NetConnection -ComputerName 100.74.240.106 -Port 1433`
+2. Ping test: `ping 100.71.73.74`
+3. Test port: `Test-NetConnection -ComputerName 100.71.73.74 -Port 1433`
 
 ### Lỗi: "Login failed for user 'sa'"
 **Giải pháp:**
